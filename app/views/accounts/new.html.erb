@@ -1,0 +1,19 @@
+<h1>Create a new account</h1>
+
+<%= form_for :account, url: accounts_path do |f| %>
+  <p>
+    <%= f.label :Username %><br>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :Password %><br>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label "Confirm password" %><br>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
