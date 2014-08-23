@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  http_basic_authenticate_with name: "FurryKids", password: "petsrule"
+
   def new
 
   end
