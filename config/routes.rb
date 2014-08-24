@@ -3,6 +3,7 @@ SwsRailsApp::Application.routes.draw do
   resources :account_dashboard
 
   resources :accounts do
+    resources :owners
     resources :pets
   end
 
