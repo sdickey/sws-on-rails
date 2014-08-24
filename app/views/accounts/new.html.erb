@@ -1,12 +1,22 @@
 <h1>Create a new account</h1>
 
 <%= form_for :account, url: accounts_path do |f| %>
+    <% if @account.errors.any? %>
+      <div explain-errors>
+        <h2><%= pluralize(@account.errors.count, "error") %> stopped this account from being saved:</h2>
+        <ul>
+          <% @account.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <p>
-    <%= f.label :Email %>
+    <%= f.label :Email %><br>
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label "Confirm email" %>
+    <%= f.label "Confirm email" %><br>
     <%= f.text_field :email_confirmation %>
   </p>
   <p>
