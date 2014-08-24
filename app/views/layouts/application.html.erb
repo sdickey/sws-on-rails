@@ -8,11 +8,22 @@
 </head>
 <body>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}"  %>
-<% end %>
+  <div class="main-nav">
+    <nav>
+      <% if current_account %>
+        Logged in as <%= current_account.email %>
+        <%= link_to "logout", logout_path %>
+      <% else %>
+        <%= link_to "login", login_path %>
+      <% end %>
+    </nav>
+  </div>
 
-<%= yield %>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, id: "flash_#{name}"  %>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>
