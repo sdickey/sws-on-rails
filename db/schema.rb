@@ -11,12 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823225522) do
+ActiveRecord::Schema.define(version: 20140824232148) do
 
   create_table "accounts", force: true do |t|
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pets", force: true do |t|
+    t.string   "name"
+    t.string   "kind"
+    t.string   "breed"
+    t.integer  "age"
+    t.date     "birth_month"
+    t.text     "health_history"
+    t.text     "current_health"
+    t.string   "med_name"
+    t.text     "med_administer"
+    t.string   "med_dose"
+    t.text     "med_frequency"
+    t.text     "behavior"
+    t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
