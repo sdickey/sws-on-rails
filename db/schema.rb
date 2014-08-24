@@ -17,9 +17,6 @@ ActiveRecord::Schema.define(version: 20140823225522) do
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "email"
-    t.integer  "owner_id"
-    t.integer  "pet_id"
-    t.integer  "emergency_contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

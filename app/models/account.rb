@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
   has_many :pets
   has_many :emergency_contacts
 
-  attr_accessor :password
+  attr_accessor :password, :email_confirmation
   before_save :encrypt_password
 
   validates :password, presence: true, length: { in: 10..20 }, confirmation: true,

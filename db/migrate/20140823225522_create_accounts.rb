@@ -4,9 +4,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :password_hash
       t.string :password_salt
       t.string :email
-      t.references :owner
-      t.references :pet
-      t.references :emergency_contact
+
       t.timestamps
     end
   end
