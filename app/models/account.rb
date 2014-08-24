@@ -16,6 +16,17 @@ class Account < ActiveRecord::Base
 
   validates :email_confirmation, presence: true
 
+  def self.authenticate(email, password)
+    account = find_by_email(email)
+    puts "the account email is: #{account.email}"
+    puts "the account password is: #{account.password}"
+    if account && account.password_hash == BCrypt::Engine.hash_secret(password, account.password_salt)
+      account
+    else
+      nil
+    end
+  end
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt

@@ -1,5 +1,7 @@
 SwsRailsApp::Application.routes.draw do
-  get "sessions/new"
+  get "log_in" => "sessions#new", :as => "login"
+  get "log_out" => "sessions#destroy", :as => "logout"
+  resources :sessions
   resources :accounts
 
   get "home/index"
