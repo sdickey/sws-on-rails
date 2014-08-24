@@ -5,13 +5,13 @@ class CreatePets < ActiveRecord::Migration
       t.string    :kind
       t.string    :breed
       t.integer   :age
-      t.date      :birthmonth
-      t.text      :healthhistory
-      t.text      :currenthealth
-      t.string    :medname
-      t.text      :medadminister
-      t.string    :meddose
-      t.text      :medfrequency
+      t.date      :birth_month
+      t.text      :health_history
+      t.text      :current_health
+      t.string    :med_name
+      t.text      :med_administer
+      t.string    :med_dose
+      t.text      :med_frequency
       t.text      :behavior
 
       t.timestamps
@@ -22,8 +22,6 @@ end
 class CreateOwners < ActiveRecord::Migration
   def change
     create_table :owners do |t|
-      t.string :username
-      t.string :password
       t.string :first_name
       t.string :last_name
       t.string :email
@@ -31,6 +29,10 @@ class CreateOwners < ActiveRecord::Migration
       t.string :home_phone
       t.string :work_phone
       t.string :cell_phone
+
+      t.timestamps
+
+      # add these to their own migration
       t.string :emerg_first_name
       t.string :emerg_last_name
       t.string :emerg_hphone
