@@ -1,7 +1,10 @@
 SwsRailsApp::Application.routes.draw do
   resources :sessions
-  resources :accounts
   resources :account_dashboard
+
+  resources :accounts do
+    resources :pets
+  end
 
   get "signup" => "account#new", :as => "signup"
   get "login" => "sessions#new", :as => "login"
