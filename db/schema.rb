@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140824234103) do
     t.string   "home_phone"
     t.string   "work_phone"
     t.string   "cell_phone"
+    t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

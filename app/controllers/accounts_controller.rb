@@ -16,6 +16,7 @@ class AccountsController < ApplicationController
 
   private
     def account_params
-      params.require(:account).permit(:email, :email_confirmation, :password, :password_confirmation)
+      params.require(:account).permit(:email, :email_confirmation, :password,
+                                      :password_confirmation)
     end
 end
