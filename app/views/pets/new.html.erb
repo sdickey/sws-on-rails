@@ -1,3 +1,35 @@
-<%= form_for ([@account, @account.pets.build]) do %>
-
+<%= form_for ([@account, @account.pets.build]) do |f| %>
+  <p>
+    <%= f.label  :Name%>
+    <%= f.text_field :name %><br>
+    <%= f.select :Type, options_for_select(['cat', 'dog', 'rabbit', 'fish', 'bird', 'hamster', 'gerbil', 'guineau pig', 'other']) %><br>
+    <%= f.label "Breed or kind" %>
+    <%= f.text_field :breed %>
+  </p>
+  <p>
+    <%= f.label :Age %>
+    <%= f.text_field :age %><br>
+    <%= f.label "Birth month" %>
+    <%= f.text_field :birth_month %>
+  </p>
+  <p>
+    <%= f.label "Health history" %>
+    <%= f.text_area :health_history %><br>
+    <%= f.label "Current health" %>
+    <%= f.text_area :current_health %>
+  </p>
+  <p>
+    <%= f.label :Medications %>
+    <%= f.text_area :med_name %>
+    <%= f.label "Medication procedure" %>
+    <%= f.text_area :med_administer %>
+    <%= f.label "Medication doses" %>
+    <%= f.text_area :med_dose %>
+    <%= f.label "Medication frequency" %>
+    <%= f.text_area :med_frequency %>
+  </p>
+  <p>
+    <%= f.label :Behavior %>
+    <%= f.text_area :behavior %>
+  </p>
 <% end %>
