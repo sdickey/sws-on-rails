@@ -1,35 +1,44 @@
 <%= form_for ([@account, @account.pets.build]) do |f| %>
   <p>
-    <%= f.label  :Name%>
+    <h2>Name &amp; type</h2>
+    <%= f.label  :Name%><br>
     <%= f.text_field :name %><br>
-    <%= f.select :Type, options_for_select(['cat', 'dog', 'rabbit', 'fish', 'bird', 'hamster', 'gerbil', 'guineau pig', 'other']) %><br>
-    <%= f.label "Breed or kind" %>
+    <%= f.label :Type %><br>
+    <%= f.select :kind, options_for_select(['cat', 'dog', 'rabbit', 'fish', 'bird', 'hamster', 'gerbil', 'guineau pig', 'other']) %><br>
+    <%= f.label "Breed or kind" %><br>
     <%= f.text_field :breed %>
   </p>
   <p>
-    <%= f.label :Age %>
+    <h2>Age</h2>
+    <%= f.label :Age %><br>
     <%= f.text_field :age %><br>
-    <%= f.label "Birth month" %>
+    <%= f.label "Birth month" %><br>
     <%= f.text_field :birth_month %>
   </p>
   <p>
-    <%= f.label "Health history" %>
+    <h2>Health</h2>
+    <%= f.label "Health history" %><br>
     <%= f.text_area :health_history %><br>
-    <%= f.label "Current health" %>
+    <%= f.label "Current health" %><br>
     <%= f.text_area :current_health %>
   </p>
   <p>
-    <%= f.label :Medications %>
-    <%= f.text_area :med_name %>
-    <%= f.label "Medication procedure" %>
-    <%= f.text_area :med_administer %>
-    <%= f.label "Medication doses" %>
-    <%= f.text_area :med_dose %>
-    <%= f.label "Medication frequency" %>
+    <h2>Medications</h2>
+    <%= f.label :Medications %><br>
+    <%= f.text_area :med_name %><br>
+    <%= f.label "Medication procedure" %><br>
+    <%= f.text_area :med_administer %><br>
+    <%= f.label "Medication doses" %><br>
+    <%= f.text_area :med_dose %><br>
+    <%= f.label "Medication frequency" %><br>
     <%= f.text_area :med_frequency %>
   </p>
   <p>
-    <%= f.label :Behavior %>
+    <h2>Behavior</h2>
+    <%= f.label :Behavior %><br>
     <%= f.text_area :behavior %>
+  </p>
+  <p>
+    <%= f.submit %>
   </p>
 <% end %>
