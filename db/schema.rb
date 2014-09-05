@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905050754) do
+ActiveRecord::Schema.define(version: 20140905052719) do
 
   create_table "accounts", force: true do |t|
     t.string   "password_hash"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20140905050754) do
   end
 
   create_table "emergency_contacts", force: true do |t|
+    t.string   "emerg_first_name"
+    t.string   "emerg_last_name"
+    t.string   "emerg_hphone"
+    t.string   "emerg_wphone"
+    t.string   "emerg_cphone"
+    t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
