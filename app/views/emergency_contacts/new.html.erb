@@ -1,3 +1,21 @@
 <%= form_for [(@account, @account.emergency_contacts.build)] do |f| %>
-
+  <p>
+    <h2>Name</h2>
+    <%= f.label "First name" %><br>
+    <%= f.text_field :emerg_first_name %><br>
+    <%= f.label "Last name" %><br>
+    <%= f.text_field :emerg_last_name %><br>
+  </p>
+  <p>
+    <h2>Contact numbers</h2>
+    <%= f.label "Home phone" %><br>
+    <%= f.text_field :emerg_hphone %><br>
+    <%= f.label "Work phone" %><br>
+    <%= f.text_field :emerg_wphone %><br>
+    <%= f.label "Cell phone" %><br>
+    <%= f.text_field :emerg_cphone %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
