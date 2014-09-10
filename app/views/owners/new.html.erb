@@ -15,7 +15,7 @@
     <%= f.label "Last name" %><br>
     <%= f.text_field :last_name %><br>
     <%= f.label :Email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email %><br>
   </p>
   <p>
     <%= f.label :Address %><br>
@@ -25,10 +25,10 @@
     <%= f.label "Work phone" %><br>
     <%= f.text_field :work_phone %><br>
     <%= f.label "Cell phone" %><br>
-    <%= f.text_field :cell_phone %>
+    <%= f.text_field :cell_phone %><br>
   </p>
   <p>
-    <%= f.submit class="btn btn-primary" %>
+    <%= f.submit :class => "btn btn-primary" %>
   </p>
 
 <% end %>
