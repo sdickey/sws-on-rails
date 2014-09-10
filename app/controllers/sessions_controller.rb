@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     account = Account.authenticate(params[:email], params[:password])
     if account
       session[:account_id] = account.id
-      redirect_to account_dashboard_path(session[:account_id]), notice: "You've logged in!"
+      # redirect_to account_dashboard_path(session[:account_id]), notice: "You've logged in!"
+      redirect_to new_account_owner_path(session[:account_id])
     else
       flash.now.alert = "Invalid email or password."
       render "new"

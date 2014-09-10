@@ -9,21 +9,26 @@
 <body>
 
   <div class="main-nav">
-    <nav>
-      <% if current_account %>
-        Logged in as <%= current_account.email %>
-        <%= link_to "logout", logout_path %>
-      <% else %>
-        <%= link_to "login", login_path %>
-      <% end %>
-    </nav>
-  </div>
+      <nav>
+        <% if current_account %>
+          Logged in as <%= current_account.email %>
+          <%= link_to "logout", logout_path %>
+        <% else %>
+          <%= link_to "login", login_path %>
+        <% end %>
+      </nav>
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="span9"><%= yield %></div>
+      <div class="span3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ducimus unde possimus saepe hic nisi quae rem voluptate est ex harum, quibusdam fugit inventore nulla, adipisci incidunt vero ad placeat.</div>
+    </div>
 
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, id: "flash_#{name}"  %>
-  <% end %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}"  %>
+    <% end %>
+</div>
 
-  <%= yield %>
 
 </body>
 </html>
