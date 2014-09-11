@@ -8,27 +8,29 @@
 
 <p>Add additional owners using the form below or <%= link_to "Continue", new_account_pet_path %></p>
 
-<%= form_for ([@account, @account.owners.build]) do |f| %>
-  <p>
-    <%= f.label "First name" %><br>
-    <%= f.text_field :first_name %><br>
-    <%= f.label "Last name" %><br>
-    <%= f.text_field :last_name %><br>
-    <%= f.label :Email %><br>
-    <%= f.text_field :email %><br>
-  </p>
-  <p>
-    <%= f.label :Address %><br>
-    <%= f.text_field :address %><br>
-    <%= f.label "Home phone" %><br>
-    <%= f.text_field :home_phone %><br>
-    <%= f.label "Work phone" %><br>
-    <%= f.text_field :work_phone %><br>
-    <%= f.label "Cell phone" %><br>
-    <%= f.text_field :cell_phone %><br>
-  </p>
-  <p>
-    <%= f.submit :class => "btn btn-primary" %>
-  </p>
+<div class="input-form ">
+  <%= form_for ([@account, @account.owners.build]) do |f| %>
+    <p>
+      <%= f.label "First name" %><br>
+      <%= f.text_field :first_name %><br>
+      <%= f.label "Last name" %><br>
+      <%= f.text_field :last_name %><br>
+      <%= f.label :Email %><br>
+      <%= f.text_field :email %><br>
+    </p>
+    <p>
+      <%= f.label :Address %><br>
+      <%= f.text_field :address %><br>
+      <%= f.label "Home phone" %><br>
+      <%= f.text_field :home_phone %><br>
+      <%= f.label "Work phone" %><br>
+      <%= f.text_field :work_phone %><br>
+      <%= f.label "Cell phone" %><br>
+      <%= f.text_field :cell_phone %><br>
+    </p>
+    <p>
+      <%= f.submit :value => "Add Owner", :class => "btn btn-primary" %>
+    </p>
 
-<% end %>
+  <% end %>
+</div>

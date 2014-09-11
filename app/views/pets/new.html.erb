@@ -1,44 +1,50 @@
-<%= form_for ([@account, @account.pets.build]) do |f| %>
-  <p>
-    <h2>Name &amp; type</h2>
-    <%= f.label  :Name%><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :Type %><br>
-    <%= f.select :kind, options_for_select(['dog', 'cat', 'rabbit', 'fish', 'bird', 'hamster', 'gerbil', 'guineau pig', 'other']) %><br>
-    <%= f.label "Breed or kind" %><br>
-    <%= f.text_field :breed %>
-  </p>
-  <p>
-    <h2>Age</h2>
-    <%= f.label :Age %><br>
-    <%= f.text_field :age %><br>
-    <%= f.label "Birth month" %><br>
-    <%= f.text_field :birth_month %>
-  </p>
-  <p>
-    <h2>Health</h2>
-    <%= f.label "Health history" %><br>
-    <%= f.text_area :health_history %><br>
-    <%= f.label "Current health" %><br>
-    <%= f.text_area :current_health %>
-  </p>
-  <p>
-    <h2>Medications</h2>
-    <%= f.label :Medications %><br>
-    <%= f.text_area :med_name %><br>
-    <%= f.label "Medication procedure" %><br>
-    <%= f.text_area :med_administer %><br>
-    <%= f.label "Medication doses" %><br>
-    <%= f.text_area :med_dose %><br>
-    <%= f.label "Medication frequency" %><br>
-    <%= f.text_area :med_frequency %>
-  </p>
-  <p>
-    <h2>Behavior</h2>
-    <%= f.label :Behavior %><br>
-    <%= f.text_area :behavior %>
-  </p>
-  <p>
-    <%= f.submit :class => 'btn btn-primary' %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 well well-lg">
+      <%= form_for ([@account, @account.pets.build]) do |f| %>
+        <div class="well well-lg" style="background: #fafafa;">
+          <h2>Name &amp; type</h2>
+          <%= f.label  :Name%><br>
+          <%= f.text_field :name %><br>
+          <%= f.label :Type %><br>
+          <%= f.select :kind, options_for_select(['dog', 'cat', 'rabbit', 'fish', 'bird', 'hamster', 'gerbil', 'guineau pig', 'other']) %><br>
+          <%= f.label "Breed or kind" %><br>
+          <%= f.text_field :breed %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <h2>Age</h2>
+          <%= f.label :Age %><br>
+          <%= f.text_field :age %><br>
+          <%= f.label "Birth month" %><br>
+          <%= f.text_field :birth_month %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <h2>Health</h2>
+          <%= f.label "Health history" %><br>
+          <%= f.text_area :health_history %><br>
+          <%= f.label "Current health" %><br>
+          <%= f.text_area :current_health %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <h2>Medications</h2>
+          <%= f.label :Medications %><br>
+          <%= f.text_area :med_name %><br>
+          <%= f.label "Medication procedure" %><br>
+          <%= f.text_area :med_administer %><br>
+          <%= f.label "Medication doses" %><br>
+          <%= f.text_area :med_dose %><br>
+          <%= f.label "Medication frequency" %><br>
+          <%= f.text_area :med_frequency %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <h2>Behavior</h2>
+          <%= f.label :Behavior %><br>
+          <%= f.text_area :behavior %>
+        </div>
+        <p>
+          <%= f.submit :value => 'Add Pet', :class => 'btn btn-primary' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

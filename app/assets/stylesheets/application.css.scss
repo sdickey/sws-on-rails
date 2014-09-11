@@ -1,0 +1,24 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* Global styles
+====================== */
+body {
+  padding-top: 125px;
+}
+
+input,
+textarea,
+select {
+  margin-bottom: 25px;
+}
+
+textarea {
+  width: 80%;
+  height: 250px;
+  resize: none;
+}
+
+label {
+  font-size: 1.5em;
+}
