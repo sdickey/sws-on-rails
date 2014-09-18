@@ -1,45 +1,52 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1 well well-lg">
+    <div class="col-md-8 col-md-offset-2 well well-lg">
+      <div class="well well-lg" style="background: #fafafa;">
+        <h1 class="form-header">Pets</h1>
+      </div>
+      <div class="well well-lg" style="background: #fafafa;">
+      <% if @account.pets.length > 0 %>
+        <h4>Pets on your account:</h4>
+        <% @account.pets.each do |pet| %>
+          <li><%= pet.name %></li>
+        <% end %>
+      <% end %>
+      <p>Add pets using the form below or <%= link_to 'Continue', new_account_emergency_contact_path, :class => 'link-btn' %></p>
+      </div>
       <%= form_for ([@account, @account.pets.build]) do |f| %>
         <div class="well well-lg" style="background: #fafafa;">
-          <h2>Name &amp; type</h2>
-          <%= f.label  :Name%><br>
-          <%= f.text_field :name %><br>
+          <%= f.label  :Name %><br>
+          <%= f.text_field :name, :placeholder => 'Pet name' %><br>
           <%= f.label :Type %><br>
           <%= f.select :kind, options_for_select(['dog', 'cat', 'rabbit', 'fish', 'bird', 'hamster', 'gerbil', 'guineau pig', 'other']) %><br>
           <%= f.label "Breed or kind" %><br>
           <%= f.text_field :breed %>
         </div>
         <div class="well well-lg" style="background: #fafafa;">
-          <h2>Age</h2>
           <%= f.label :Age %><br>
           <%= f.text_field :age %><br>
           <%= f.label "Birth month" %><br>
           <%= f.text_field :birth_month %>
         </div>
         <div class="well well-lg" style="background: #fafafa;">
-          <h2>Health</h2>
           <%= f.label "Health history" %><br>
-          <%= f.text_area :health_history %><br>
+          <%= f.text_area :health_history, :placeholder => 'Please describe any health issues your pet has had in the past.' %><br>
           <%= f.label "Current health" %><br>
-          <%= f.text_area :current_health %>
+          <%= f.text_area :current_health, :placeholder => 'Please describe any current health issues for your pet.' %>
         </div>
         <div class="well well-lg" style="background: #fafafa;">
-          <h2>Medications</h2>
           <%= f.label :Medications %><br>
-          <%= f.text_area :med_name %><br>
+          <%= f.text_area :med_name, :placeholder => 'Please list all medications that your pet is currently taking.' %><br>
           <%= f.label "Medication procedure" %><br>
-          <%= f.text_area :med_administer %><br>
+          <%= f.text_area :med_administer, :placeholder => 'Please give instructions on how to administer each medication listed above.' %><br>
           <%= f.label "Medication doses" %><br>
-          <%= f.text_area :med_dose %><br>
+          <%= f.text_area :med_dose, :placeholder => 'Please list doses for each medication.' %><br>
           <%= f.label "Medication frequency" %><br>
-          <%= f.text_area :med_frequency %>
+          <%= f.text_area :med_frequency, :placeholder => 'Please describe how often each medication is given.' %>
         </div>
         <div class="well well-lg" style="background: #fafafa;">
-          <h2>Behavior</h2>
           <%= f.label :Behavior %><br>
-          <%= f.text_area :behavior %>
+          <%= f.text_area :behavior, :placeholder => 'Please describe any behavior we should be aware of' %>
         </div>
         <p>
           <%= f.submit :value => 'Add Pet', :class => 'btn btn-primary' %>

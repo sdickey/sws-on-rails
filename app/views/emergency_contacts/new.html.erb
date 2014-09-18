@@ -1,21 +1,37 @@
-<%= form_for ([@account, @account.emergency_contacts.build]) do |f| %>
-  <p>
-    <h2>Name</h2>
-    <%= f.label "First name" %><br>
-    <%= f.text_field :emerg_first_name %><br>
-    <%= f.label "Last name" %><br>
-    <%= f.text_field :emerg_last_name %><br>
-  </p>
-  <p>
-    <h2>Contact numbers</h2>
-    <%= f.label "Home phone" %><br>
-    <%= f.text_field :emerg_hphone %><br>
-    <%= f.label "Work phone" %><br>
-    <%= f.text_field :emerg_wphone %><br>
-    <%= f.label "Cell phone" %><br>
-    <%= f.text_field :emerg_cphone %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 well well-lg">
+      <div class="well well-lg" style="background: #fafafa;">
+        <h1 class="form-header">Emergency Contacts</h1>
+      </div>
+      <div class="well well-lg" style="background: #fafafa;">
+        <% if @account.emergency_contacts.length > 0  %>
+          <h4>Emergency contacts on your account:</h4>
+          <% @account.emergency_contacts.each do |contact| %>
+            <li><%= contact.emerg_first_name %> <%= contact.emerg_last_name %></li>
+          <% end %>
+        <% end %>
+        <p>Add an emergency contact using the form below or <%= link_to 'Continue', account_dashboard_path(@account.id), :class => 'link-btn' %>
+      </div>
+      <%= form_for ([@account, @account.emergency_contacts.build]) do |f| %>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "First name" %><br>
+          <%= f.text_field :emerg_first_name, :placeholder => 'First name' %><br>
+          <%= f.label "Last name" %><br>
+          <%= f.text_field :emerg_last_name, :placeholder => 'Last name' %><br>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "Home phone" %><br>
+          <%= f.text_field :emerg_hphone, :placeholder => '(408) 555-5555' %><br>
+          <%= f.label "Work phone" %><br>
+          <%= f.text_field :emerg_wphone, :placeholder => '(408) 555-5555' %><br>
+          <%= f.label "Cell phone" %><br>
+          <%= f.text_field :emerg_cphone, :placeholder => '(408) 555-5555' %>
+        </div>
+        <p>
+          <%= f.submit :value => 'Add Emergency Contact', :class => 'btn btn-primary' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,23 @@ select {
   margin-bottom: 25px;
 }
 
+.link-btn {
+  color: #fff;
+  background: #428bca;
+  border: 1px solid #285e8e;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 5px;
+  padding: 5px 25px;
+}
+
+.link-btn:hover {
+  text-decoration: none;
+  color: #fff;
+  background: #357ebd;
+}
+
 textarea {
   width: 80%;
   height: 250px;
@@ -22,3 +39,9 @@ textarea {
 label {
   font-size: 1.5em;
 }
+
+.form-header {
+  text-align: center;
+}
+
+

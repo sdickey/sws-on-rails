@@ -1,36 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 well well-lg">
+      <div class="well well-lg" style="background: #fafafa;">
+        <h1 class="form-header">Owners</h1>
+      </div>
+      <div class="well well-lg" style="background: #fafafa;">
+        <% if @account.owners.length > 0 %>
+          <h4>Owners for this account:</h4>
+          <% @account.owners.each do |owner| %>
+            <ul>
+              <li><%= owner.first_name %> <%= owner.last_name %></li>
+            </ul>
+          <% end %>
+          <p>Add owners using the form below or <%= link_to "Continue", new_account_pet_path, :class => 'link-btn' %></p>
+        <% end %>
+      </div>
 
-<h4>These owners are currently listed on this account:</h4>
-<% @account.owners.each do |owner| %>
-  <ul>
-    <li><%= owner.first_name %> <%= owner.last_name %></li>
-  </ul>
-<% end %>
 
-<p>Add additional owners using the form below or <%= link_to "Continue", new_account_pet_path %></p>
-
-<div class="input-form ">
-  <%= form_for ([@account, @account.owners.build]) do |f| %>
-    <p>
-      <%= f.label "First name" %><br>
-      <%= f.text_field :first_name %><br>
-      <%= f.label "Last name" %><br>
-      <%= f.text_field :last_name %><br>
-      <%= f.label :Email %><br>
-      <%= f.text_field :email %><br>
-    </p>
-    <p>
-      <%= f.label :Address %><br>
-      <%= f.text_field :address %><br>
-      <%= f.label "Home phone" %><br>
-      <%= f.text_field :home_phone %><br>
-      <%= f.label "Work phone" %><br>
-      <%= f.text_field :work_phone %><br>
-      <%= f.label "Cell phone" %><br>
-      <%= f.text_field :cell_phone %><br>
-    </p>
-    <p>
-      <%= f.submit :value => "Add Owner", :class => "btn btn-primary" %>
-    </p>
-
-  <% end %>
+      <%= form_for ([@account, @account.owners.build]) do |f| %>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "First name" %><br>
+          <%= f.text_field :first_name %><br>
+          <%= f.label "Last name" %><br>
+          <%= f.text_field :last_name %><br>
+          <%= f.label :Email %><br>
+          <%= f.text_field :email %><br>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label :Address %><br>
+          <%= f.text_field :address %><br>
+          <%= f.label "Home phone" %><br>
+          <%= f.text_field :home_phone %><br>
+          <%= f.label "Work phone" %><br>
+          <%= f.text_field :work_phone %><br>
+          <%= f.label "Cell phone" %><br>
+          <%= f.text_field :cell_phone %><br>
+        </div>
+        <p>
+          <%= f.submit :value => "Add Owner", :class => "btn btn-primary" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>
