@@ -44,4 +44,28 @@ label {
   text-align: center;
 }
 
+/* Login page
+======================= */
+.login input {
+  width: 100%;
+  height: 45px;
+  font-size: 1.5em;
+}
 
+.login .btn {
+  width: 30%;
+  font-size: 1.2em;
+}
+
+.login .panel-heading {
+  background: #D8FC8E;
+}
+
+.login .panel-body {
+  padding-top: 25px;
+  background: #fafafa;
+}
+
+.login-logo {
+  text-align: center;
+}

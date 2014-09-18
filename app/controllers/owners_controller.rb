@@ -9,16 +9,26 @@ class OwnersController < ApplicationController
   end
 
   def create
-    puts "The parameters hash at account_id: #{params[:account_id]}"
     @account = Account.find(params[:account_id])
-    puts "this is the account after assignment: #{@account.inspect}"
     @owner = @account.owners.create(owner_params)
 
     render 'new'
   end
 
-  def update
+  def edit
+    @account = Account.find(params[:account_id])
+    @owner = @account.owners.find(params[:id])
+  end
 
+  def update
+    @account = Account.find(params[:account_id])
+    @owner = @account.owners.find(params[:id])
+
+    if @owner.update(owner_params)
+      render 'new'
+    else
+      render 'edit'
+    end
   end
 
   def destroy
