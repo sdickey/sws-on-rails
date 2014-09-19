@@ -10,7 +10,8 @@
           <% @account.emergency_contacts.each do |contact| %>
             <li><%= contact.emerg_first_name %> <%= contact.emerg_last_name %>
               <%= link_to 'edit', edit_account_emergency_contact_path(contact.account_id, contact.id) %>
-              <%= link_to 'remove' %>
+              <%= link_to 'remove', account_emergency_contact_path(contact.account_id, contact.id),
+              method: :delete, data: { confirm: "Are you sure you want to permanently delete #{contact.emerg_first_name} #{contact.emerg_last_name} from this account?"} %>
             </li>
           <% end %>
         <% end %>

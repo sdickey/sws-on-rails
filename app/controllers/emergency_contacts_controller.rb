@@ -28,7 +28,10 @@ class EmergencyContactsController < ApplicationController
   end
 
   def destroy
-
+    @account = Account.find(params[:account_id])
+    @emergency_contact = @account.emergency_contacts.find(params[:id])
+    @emergency_contact.destroy
+    render 'new'
   end
 
   private
