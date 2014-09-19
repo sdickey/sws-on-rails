@@ -14,6 +14,7 @@ class CreatePets < ActiveRecord::Migration
       t.text       :med_frequency
       t.text       :behavior
       t.belongs_to :account
+      change_column :birth_month, :string
       t.timestamps
     end
   end

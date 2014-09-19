@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 well well-lg">
+      <div class="well well-lg" style="background: #fafafa;">
+        <h1 class="form-header">Pets</h1>
+      </div>
+
+      <%= form_for ([@account, @account.pets.build]), url: account_pet_path(@pet.account_id, @pet.id), method: :patch do |f| %>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label  :Name %><br>
+          <%= f.text_field :name, :value => @pet.name  %><br>
+          <%= f.label :Type %><br>
+          <%= f.select :kind, options_for_select(['dog', 'cat', 'rabbit', 'fish', 'bird', 'hamster', 'gerbil', 'guineau pig', 'other']) %><br>
+          <%= f.label "Breed or kind" %><br>
+          <%= f.text_field :breed, :value => @pet.breed %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label :Age %><br>
+          <%= f.text_field :age, :value => @pet.age %><br>
+          <%= f.label "Birth month" %><br>
+          <%= f.text_field :birth_month, :value => @pet.birth_month %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "Health history" %><br>
+          <%= f.text_area :health_history, :value => @pet.health_history %><br>
+          <%= f.label "Current health" %><br>
+          <%= f.text_area :current_health, :value => @pet.current_health %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label :Medications %><br>
+          <%= f.text_area :med_name, :value => @pet.med_name %><br>
+          <%= f.label "Medication procedure" %><br>
+          <%= f.text_area :med_administer, :value => @pet.med_administer %><br>
+          <%= f.label "Medication doses" %><br>
+          <%= f.text_area :med_dose, :value => @pet.med_dose %><br>
+          <%= f.text_area :med_frequency, :value => @pet.med_frequency %>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label :Behavior %><br>
+          <%= f.text_area :behavior, :value => @pet.behavior %>
+        </div>
+        <p>
+          <%= f.submit :value => 'Update pet', :class => 'btn btn-primary' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
