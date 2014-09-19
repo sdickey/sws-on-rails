@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 well well-lg">
+      <div class="well well-lg" style="background: #fafafa;">
+        <h1 class="form-header">Emergency Contacts</h1>
+      </div>
+      <%= form_for ([@account, @account.emergency_contacts.build]), url: account_emergency_contact_path(@emergency_contact.account_id, @emergency_contact.id), method: :patch do |f| %>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "First name" %><br>
+          <%= f.text_field :emerg_first_name, :value => @emergency_contact.emerg_first_name %><br>
+          <%= f.label "Last name" %><br>
+          <%= f.text_field :emerg_last_name, :value => @emergency_contact.emerg_last_name %><br>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "Home phone" %><br>
+          <%= f.text_field :emerg_hphone, :value => @emergency_contact.emerg_hphone %><br>
+          <%= f.label "Work phone" %><br>
+          <%= f.text_field :emerg_wphone, :value => @emergency_contact.emerg_wphone %><br>
+          <%= f.label "Cell phone" %><br>
+          <%= f.text_field :emerg_cphone, :value => @emergency_contact.emerg_cphone %>
+        </div>
+        <p>
+          <%= link_to 'Back', new_account_emergency_contact_path, :class => 'btn btn-primary' %>
+          <%= f.submit :value => 'Update', :class => 'btn btn-primary' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

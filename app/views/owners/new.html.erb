@@ -11,7 +11,8 @@
             <ul>
               <li><%= owner.first_name %> <%= owner.last_name %>
                 <%= link_to 'edit', edit_account_owner_path(owner.account_id, owner.id) %>
-                <%= link_to 'remove' %>
+                <%= link_to 'remove', account_owner_path(owner.account_id, owner.id),
+                    method: :delete, data: { confirm: "Are you sure you want to permanently delete #{owner.first_name} #{owner.last_name} from the account?"} %>
               </li>
             </ul>
           <% end %>

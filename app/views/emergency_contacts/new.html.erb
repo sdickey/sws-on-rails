@@ -32,6 +32,7 @@
           <%= f.text_field :emerg_cphone, :placeholder => '(408) 555-5555' %>
         </div>
         <p>
+          <%= link_to 'Back', new_account_pet_path, :class => 'btn btn-primary' %>
           <%= f.submit :value => 'Add Emergency Contact', :class => 'btn btn-primary' %>
         </p>
       <% end %>
