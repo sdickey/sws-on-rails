@@ -8,7 +8,10 @@
         <% if @account.emergency_contacts.length > 0  %>
           <h4>Emergency contacts on your account:</h4>
           <% @account.emergency_contacts.each do |contact| %>
-            <li><%= contact.emerg_first_name %> <%= contact.emerg_last_name %></li>
+            <li><%= contact.emerg_first_name %> <%= contact.emerg_last_name %>
+              <%= link_to 'edit', edit_account_emergency_contact_path(contact.account_id, contact.id) %>
+              <%= link_to 'remove' %>
+            </li>
           <% end %>
         <% end %>
         <p>Add an emergency contact using the form below or <%= link_to 'Continue', account_dashboard_path(@account.id), :class => 'link-btn' %>
