@@ -25,6 +25,13 @@ class PetsController < ApplicationController
     end
   end
 
+  def destroy
+    @account = Account.find(params[:account_id])
+    @pet = @account.pets.find(params[:id])
+    @pet.destroy
+    render 'new'
+  end
+
   private
     def pet_params
       params.require(:pet).permit(:name, :kind, :breed, :age, :birth_month,
