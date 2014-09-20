@@ -69,3 +69,20 @@ label {
 .login-logo {
   text-align: center;
 }
+/* User dashboard styles
+======================== */
+.dashboard-list {
+  list-style-type: none;
+  margin-left: -20px;
+}
+
+.dashboard-list li {
+  font-size: 1.2em;
+  margin-bottom: 10px
+}
+
+.dashboard-list .btn {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+}

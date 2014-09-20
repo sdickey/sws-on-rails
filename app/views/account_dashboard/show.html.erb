@@ -1,1 +1,78 @@
-<h1>Welcome To Your Dashboard!</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 well well-lg">
+      <div class="well well-lg" style="background: #fafafa;">
+        <h1 class="form-header">Account Dashboard</h1>
+      </div>
+
+
+        <div class="panel panel-default" style="background: #fafafa;">
+          <div class="panel-heading">
+            <h3 class="form-header">Owners</h3>
+          </div>
+          <div class="panel-body">
+            <% @account.owners.each do |owner| %>
+                <ul class="dashboard-list">
+                  <h3><%= owner.first_name %> <%= owner.last_name %></h3>
+                  <li><b>email:</b> <%= owner.email %></li>
+                  <li><b>address:</b> <%= owner.address %></li>
+                  <li><b>home phone:</b> <%= owner.home_phone %></li>
+                  <li><b>work phone:</b> <%= owner.work_phone %></li>
+                  <li><b>cell phone:</b> <%= owner.cell_phone %></li>
+                  <%= link_to 'edit', edit_account_owner_path(owner.account_id, owner.id), :class => 'btn btn-success' %>
+                  <%= link_to 'remove', account_owner_path(owner.account_id, owner.id), :class => 'btn btn-danger',
+                      method: :delete, data: { confirm: "Are you sure you want to permanently delete #{owner.first_name} #{owner.last_name} from the account?"} %>
+                </ul>
+                <hr>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel panel-default" style="background: #fafafa;">
+          <div class="panel-heading">
+            <h3 class="form-header">Pets</h3>
+          </div>
+          <div class="panel-body">
+            <% @account.pets.each do |pet| %>
+              <ul class="dashboard-list">
+                <h3><%= pet.name %></h3>
+                <li><b>kind:</b> <%= pet.kind %></li>
+                <li><b>breed:</b> <%= pet.breed %></li>
+                <li><b>age:</b> <%= pet.age %></li>
+                <li><b>birth month:</b> <%= pet.birth_month %></li>
+                <li><b>health history:</b> <%= pet.health_history %></li>
+                <li><b>current health:</b> <%= pet.current_health %></li>
+                <li><b>medication:</b> <%= pet.med_name %></li>
+                <li><b>administration method:</b> <%= pet.med_administer %></li>
+                <li><b>medication dose:</b> <%= pet.med_dose %></li>
+                <li><b>medication frequency:</b> <%= pet.med_frequency %></li>
+                <li><b>behavior:</b> <%= pet.behavior %></li>
+                <%= link_to 'edit', edit_account_pet_path(pet.account_id, pet.id), :class => 'btn btn-success' %>
+                <%= link_to 'remove', account_pet_path(pet.account_id, pet.id), :class => 'btn btn-danger',
+                      method: :delete, data: { confirm: "Are you sure you want to permanently delete #{pet.name} from the account?"} %>
+              </ul>
+              <hr>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel panel-default" style="background: #fafafa;">
+          <div class="panel-heading">
+            <h3 class="form-header">Emergency Contacts</h3>
+          </div>
+          <div class="panel-body">
+            <% @account.emergency_contacts.each do |contact| %>
+              <ul class="dashboard-list">
+                <h3><%= contact.emerg_first_name %> <%= contact.emerg_last_name %></h3>
+                <li><b>home phone:</b> <%= contact.emerg_hphone %></li>
+                <li><b>work phone:</b> <%= contact.emerg_wphone %></li>
+                <li><b>cell phone:</b> <%= contact.emerg_cphone %></li>
+                <%= link_to 'edit', edit_account_emergency_contact_path(contact.account_id, contact.id), :class => 'btn btn-success' %>
+                <%= link_to 'remove', account_emergency_contact_path(contact.account_id, contact.id), :class => 'btn btn-danger',
+                      method: :delete, data: { confirm: "Are you sure you want to permanently delete #{contact.emerg_first_name} #{contact.emerg_last_name} from the account?"} %>
+              </ul>
+              <hr>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
