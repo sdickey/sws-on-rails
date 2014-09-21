@@ -37,6 +37,6 @@ class PetsController < ApplicationController
       params.require(:pet).permit(:name, :kind, :breed, :age, :birth_month,
                                   :health_history, :current_health, :med_name,
                                   :med_administer, :med_dose, :med_frequency,
-                                  :behavior)
+                                  :behavior, :food_instructions, :visit_instructions)
     end
 end

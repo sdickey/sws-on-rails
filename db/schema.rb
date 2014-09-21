@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905052719) do
+ActiveRecord::Schema.define(version: 20140921145950) do
 
   create_table "accounts", force: true do |t|
     t.string   "password_hash"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140905052719) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "keys_on_file",  default: 0
   end
 
   create_table "emergency_contacts", force: true do |t|
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140905052719) do
     t.string   "kind"
     t.string   "breed"
     t.integer  "age"
-    t.date     "birth_month"
+    t.integer  "birth_month"
     t.text     "health_history"
     t.text     "current_health"
     t.string   "med_name"
@@ -61,6 +62,8 @@ ActiveRecord::Schema.define(version: 20140905052719) do
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "food_instructions"
+    t.text     "visit_instructions"
   end
 
 end
