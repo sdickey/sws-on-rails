@@ -48,8 +48,16 @@
           <%= f.text_area :med_frequency, :placeholder => 'Please describe how often each medication is given.' %>
         </div>
         <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "Feeding instructions" %><br>
+          <%= f.text_area :food_instructions, :placeholder => 'Please describe the type of food (e.g wet, dry, etc.), amounts per feeding, and how often pet is fed.' %><br>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "Visit instructions" %><br>
+          <%= f.text_area :visit_instructions, :placeholder => "Please describe the visit routine you'd like us to follow with this pet. For example, 15 minute walk, followed by food, and then playtime." %><br>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
           <%= f.label :Behavior %><br>
-          <%= f.text_area :behavior, :placeholder => 'Please describe any behavior we should be aware of' %>
+          <%= f.text_area :behavior, :placeholder => 'Please describe any behavior we should be aware of.' %>
         </div>
         <p>
           <%= f.submit :value => 'Add Pet', :class => 'btn btn-primary' %>
