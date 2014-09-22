@@ -4,8 +4,6 @@
       <div class="well well-lg" style="background: #fafafa;">
         <h1 class="form-header">Account Dashboard</h1>
       </div>
-
-
         <div class="panel panel-default" style="background: #fafafa;">
           <div class="panel-heading">
             <h3 class="form-header">Owners</h3>
@@ -45,6 +43,8 @@
                 <li><b>administration method:</b> <%= pet.med_administer %></li>
                 <li><b>medication dose:</b> <%= pet.med_dose %></li>
                 <li><b>medication frequency:</b> <%= pet.med_frequency %></li>
+                <li><b>feeding instructions:</b> <%= pet.food_instructions %></li>
+                <li><b>visit instructions:</b> <%= pet.visit_instructions %></li>
                 <li><b>behavior:</b> <%= pet.behavior %></li>
                 <%= link_to 'edit', edit_account_pet_path(pet.account_id, pet.id), :class => 'btn btn-success' %>
                 <%= link_to 'remove', account_pet_path(pet.account_id, pet.id), :class => 'btn btn-danger',
