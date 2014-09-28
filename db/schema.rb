@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921145950) do
+ActiveRecord::Schema.define(version: 20140928135059) do
 
   create_table "accounts", force: true do |t|
     t.string   "password_hash"
@@ -37,13 +37,17 @@ ActiveRecord::Schema.define(version: 20140921145950) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "address"
     t.string   "home_phone"
     t.string   "work_phone"
     t.string   "cell_phone"
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "number_and_street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
   end
 
   create_table "pets", force: true do |t|
@@ -51,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140921145950) do
     t.string   "kind"
     t.string   "breed"
     t.integer  "age"
-    t.integer  "birth_month"
+    t.string   "birth_month"
     t.text     "health_history"
     t.text     "current_health"
     t.string   "med_name"
