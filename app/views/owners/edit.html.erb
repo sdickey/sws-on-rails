@@ -33,7 +33,7 @@
         </div>
         <p>
           <%= f.submit :value => "Update owner", :class => "btn btn-primary" %>
-          <%= link_to 'Back', new_account_owner_path, :class => 'btn btn-primary' %>
+          <%= link_to 'Back', account_dashboard_path(@owner.account_id), :class => 'btn btn-primary' %>
         </p>
       <% end %>
     </div>
