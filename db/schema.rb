@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928135059) do
+ActiveRecord::Schema.define(version: 20140921145950) do
 
   create_table "accounts", force: true do |t|
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "email"
+    t.integer  "keys_on_file",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "keys_on_file",  default: 0
   end
 
   create_table "emergency_contacts", force: true do |t|
@@ -37,17 +37,17 @@ ActiveRecord::Schema.define(version: 20140928135059) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.string   "number_and_street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
     t.string   "home_phone"
     t.string   "work_phone"
     t.string   "cell_phone"
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "number_and_street"
-    t.string   "unit"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
   end
 
   create_table "pets", force: true do |t|
@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 20140928135059) do
     t.text     "med_administer"
     t.string   "med_dose"
     t.text     "med_frequency"
+    t.text     "food_instructions"
+    t.text     "visit_instructions"
     t.text     "behavior"
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "food_instructions"
-    t.text     "visit_instructions"
   end
 
 end

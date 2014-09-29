@@ -4,7 +4,11 @@ class CreateOwners < ActiveRecord::Migration
       t.string     :first_name
       t.string     :last_name
       t.string     :email
-      t.string     :address
+      t.string     :number_and_street
+      t.string     :unit
+      t.string     :city
+      t.string     :state
+      t.integer     :zip
       t.string     :home_phone
       t.string     :work_phone
       t.string     :cell_phone

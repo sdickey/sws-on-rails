@@ -5,12 +5,16 @@
 ====================== */
 body {
   padding-top: 125px;
-}
+ }
 
 input,
 textarea,
 select {
   margin-bottom: 25px;
+}
+
+.master-well {
+  background-image: image-url('bg-noise.png');
 }
 
 .link-btn {
@@ -87,4 +91,13 @@ label {
   margin-right: 10px;
   letter-spacing: 1px;
   font-size: 1.1em;
+}
+
+.dashboard-list ul {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  border-radius: 5px;
 }

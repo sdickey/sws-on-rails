@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2 well well-lg">
-      <div class="well well-lg" style="background: #fafafa;">
+    <div class="col-md-8 col-md-offset-2 well well-lg master-well">
+      <div class="well well-lg">
         <h1 class="form-header">Account Dashboard</h1>
       </div>
         <div class="panel panel-default" style="background: #fafafa;">
@@ -12,11 +12,17 @@
             <% @account.owners.each do |owner| %>
                 <ul class="dashboard-list">
                   <h3><%= owner.first_name %> <%= owner.last_name %></h3>
-                  <li><b>email:</b> <%= owner.email %></li>
-                  <li><b>address:</b> <%= owner.address %></li>
-                  <li><b>home phone:</b> <%= owner.home_phone %></li>
-                  <li><b>work phone:</b> <%= owner.work_phone %></li>
-                  <li><b>cell phone:</b> <%= owner.cell_phone %></li>
+                  <li class="list-group-item"><b>email:</b> <%= owner.email %></li>
+                    <ul class="list-group-item">
+                      <li><b>address:</b></li>
+                      <li><%= owner.number_and_street%></li>
+                      <li><%= owner.unit %></li>
+                      <li><%= owner.city %>, <%= owner.state %></li>
+                      <li><%= owner.zip %></li>
+                    </ul>
+                  <li class="list-group-item"><b>home phone:</b> <%= owner.home_phone %></li>
+                  <li class="list-group-item"><b>work phone:</b> <%= owner.work_phone %></li>
+                  <li class="list-group-item"><b>cell phone:</b> <%= owner.cell_phone %></li>
                   <%= link_to 'edit', edit_account_owner_path(owner.account_id, owner.id), :class => 'btn btn-success' %>
                   <%= link_to 'remove', account_owner_path(owner.account_id, owner.id), :class => 'btn btn-danger',
                       method: :delete, data: { confirm: "Are you sure you want to permanently delete #{owner.first_name} #{owner.last_name} from the account?"} %>
@@ -33,19 +39,19 @@
             <% @account.pets.each do |pet| %>
               <ul class="dashboard-list">
                 <h3><%= pet.name %></h3>
-                <li><b>kind:</b> <%= pet.kind %></li>
-                <li><b>breed:</b> <%= pet.breed %></li>
-                <li><b>age:</b> <%= pet.age %></li>
-                <li><b>birth month:</b> <%= pet.birth_month %></li>
-                <li><b>health history:</b> <%= pet.health_history %></li>
-                <li><b>current health:</b> <%= pet.current_health %></li>
-                <li><b>medication:</b> <%= pet.med_name %></li>
-                <li><b>administration method:</b> <%= pet.med_administer %></li>
-                <li><b>medication dose:</b> <%= pet.med_dose %></li>
-                <li><b>medication frequency:</b> <%= pet.med_frequency %></li>
-                <li><b>feeding instructions:</b> <%= pet.food_instructions %></li>
-                <li><b>visit instructions:</b> <%= pet.visit_instructions %></li>
-                <li><b>behavior:</b> <%= pet.behavior %></li>
+                <li class="list-group-item"><b>kind:</b> <%= pet.kind %></li>
+                <li class="list-group-item"><b>breed:</b> <%= pet.breed %></li>
+                <li class="list-group-item"><b>age:</b> <%= pet.age %></li>
+                <li class="list-group-item"><b>birth month:</b> <%= pet.birth_month %></li>
+                <li class="list-group-item"><b>health history:</b> <%= pet.health_history %></li>
+                <li class="list-group-item"><b>current health:</b> <%= pet.current_health %></li>
+                <li class="list-group-item"><b>medication:</b> <%= pet.med_name %></li>
+                <li class="list-group-item"><b>administration method:</b> <%= pet.med_administer %></li>
+                <li class="list-group-item"><b>medication dose:</b> <%= pet.med_dose %></li>
+                <li class="list-group-item"><b>medication frequency:</b> <%= pet.med_frequency %></li>
+                <li class="list-group-item"><b>feeding instructions:</b> <%= pet.food_instructions %></li>
+                <li class="list-group-item"><b>visit instructions:</b> <%= pet.visit_instructions %></li>
+                <li class="list-group-item"><b>behavior:</b> <%= pet.behavior %></li>
                 <%= link_to 'edit', edit_account_pet_path(pet.account_id, pet.id), :class => 'btn btn-success' %>
                 <%= link_to 'remove', account_pet_path(pet.account_id, pet.id), :class => 'btn btn-danger',
                       method: :delete, data: { confirm: "Are you sure you want to permanently delete #{pet.name} from the account?"} %>
@@ -62,9 +68,9 @@
             <% @account.emergency_contacts.each do |contact| %>
               <ul class="dashboard-list">
                 <h3><%= contact.emerg_first_name %> <%= contact.emerg_last_name %></h3>
-                <li><b>home phone:</b> <%= contact.emerg_hphone %></li>
-                <li><b>work phone:</b> <%= contact.emerg_wphone %></li>
-                <li><b>cell phone:</b> <%= contact.emerg_cphone %></li>
+                <li class="list-group-item"><b>home phone:</b> <%= contact.emerg_hphone %></li>
+                <li class="list-group-item"><b>work phone:</b> <%= contact.emerg_wphone %></li>
+                <li class="list-group-item"><b>cell phone:</b> <%= contact.emerg_cphone %></li>
                 <%= link_to 'edit', edit_account_emergency_contact_path(contact.account_id, contact.id), :class => 'btn btn-success' %>
                 <%= link_to 'remove', account_emergency_contact_path(contact.account_id, contact.id), :class => 'btn btn-danger',
                       method: :delete, data: { confirm: "Are you sure you want to permanently delete #{contact.emerg_first_name} #{contact.emerg_last_name} from the account?"} %>

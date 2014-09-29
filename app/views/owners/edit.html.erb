@@ -15,7 +15,15 @@
         </div>
         <div class="well well-lg" style="background: #fafafa;">
           <%= f.label :Address %><br>
-          <%= f.text_field :address, :value => @owner.address %><br>
+          <%= f.text_field :number_and_street, :value => @owner.number_and_street %><br>
+          <%= f.label "Unit or Apt" %><br>
+          <%= f.text_field :unit, :value => @owner.unit %><br>
+          <%= f.label :City %><br>
+          <%= f.text_field :city, :value => @owner.city %><br>
+          <%= f.label "State" %><br>
+          <%= f.text_field :state, :value => @owner.state %><br>
+          <%= f.label "Zip code" %><br>
+          <%= f.text_field :zip, :value => @owner.zip %><br>
           <%= f.label "Home phone" %><br>
           <%= f.text_field :home_phone, :value => @owner.home_phone %><br>
           <%= f.label "Work phone" %><br>
