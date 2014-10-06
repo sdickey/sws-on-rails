@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
   def create
     @account = Account.find(params[:account_id])
     @reservation = @account.reservations.create(reservation_params)
-    if @reservation
+    if @reservation.save
       flash[:notice] = "Your reservation request has been sent!
       We'll be in contact soon. Please note that reservations are
       not added to our visit calendar until they are approved and
@@ -15,6 +15,7 @@ class ReservationsController < ApplicationController
     else
       flash[:alert] = "We're sorry, but something went wrong. Your
       reservation request couldn't be sent. Please try again."
+      render 'new'
     end
   end
 
