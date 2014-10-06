@@ -48,6 +48,10 @@ label {
   text-align: center;
 }
 
+.flash-msg {
+  font-size: 1.5em;
+}
+
 /* Login page
 ======================= */
 .login input {
@@ -100,4 +104,10 @@ label {
 
 .list-group-item {
   border-radius: 5px;
+}
+
+/* Reservations
+======================= */
+.note-to-user {
+  padding: 10px;
 }

@@ -6,6 +6,7 @@ SwsRailsApp::Application.routes.draw do
     resources :owners
     resources :pets
     resources :emergency_contacts
+    resources :reservations
   end
 
   get "signup" => "account#new", :as => "signup"

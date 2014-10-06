@@ -29,9 +29,12 @@
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Services</a></li>
-        <li><a href="#">Reservations</a></li>
         <li><a href="#">Howl at Us</a></li>
-        <li><a href="#">Make a Payment</a></li>
+        <% if current_account %>
+          <li><%= link_to 'Reservations', new_account_reservation_path(@account.id) %></li>
+          <li><%= link_to 'Make a Payment', new_account_reservation_path(@account.id) %></li>
+          <li><%= link_to 'Dashboard', account_dashboard_path(@account.id) %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_account %>
@@ -45,11 +48,18 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<% flash.each do |name, msg| %>
+  <div class="container">
+    <div class="row">
+      <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %> col-md-8 col-md-offset-2 flash-msg">
+        <%= content_tag :div, msg, id: "flash_#{name}"  %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <%= yield %>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}"  %>
-<% end %>
 
 
 </body>
