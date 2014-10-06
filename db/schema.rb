@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005225340) do
+ActiveRecord::Schema.define(version: 20141006144647) do
 
   create_table "accounts", force: true do |t|
     t.string   "password_hash"
@@ -73,11 +73,11 @@ ActiveRecord::Schema.define(version: 20141005225340) do
   create_table "reservations", force: true do |t|
     t.string   "name"
     t.date     "depart_date"
-    t.string   "depart_time"
+    t.time     "depart_time"
     t.integer  "depart_num_visits"
     t.string   "overnight_on_depart"
     t.date     "return_date"
-    t.string   "return_time"
+    t.time     "return_time"
     t.integer  "return_num_visits"
     t.integer  "num_std_visits_between"
     t.text     "custom_std_visit_schedule"

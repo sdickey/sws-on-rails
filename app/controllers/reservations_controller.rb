@@ -7,13 +7,14 @@ class ReservationsController < ApplicationController
     @account = Account.find(params[:account_id])
     @reservation = @account.reservations.create(reservation_params)
     if @reservation
-      flash[:notice] = "Thank you for making a reservation request.
+      flash[:notice] = "Your reservation request has been sent!
       We'll be in contact soon. Please note that reservations are
       not added to our visit calendar until they are approved and
       we have received a %50 deposit."
       redirect_to account_dashboard_path(@account.id)
     else
-      flash[:notice] = "We're sorry, but something went wrong."
+      flash[:alert] = "We're sorry, but something went wrong. Your
+      reservation request couldn't be sent. Please try again."
     end
   end
 
