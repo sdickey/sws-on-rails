@@ -2,6 +2,7 @@ class Account < ActiveRecord::Base
   has_many :owners
   has_many :pets
   has_many :emergency_contacts
+  has_many :reservations
 
   attr_accessor :password, :email_confirmation
   before_save :encrypt_password
