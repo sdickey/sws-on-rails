@@ -47,7 +47,7 @@
             <%= f.label "What time are you leaving?" %><br>
             <%= f.time_field :depart_time, :value => @reservation.depart_time %><br>
             <%= f.label "How many visits do you need on the day you leave?" %><br>
-            <%= f.select :depart_num_visits, [1,2,3,4], :selected => @reservation.depart_num_visits %><br>
+            <%= f.select :depart_num_visits, [0,1,2,3,4], :selected => @reservation.depart_num_visits %><br>
             <%= f.label "Do you need an overnight visit on the day you leave?" %><br>
             <%= f.select :overnight_on_depart, ['no', 'yes'], :selected => @reservation.overnight_on_depart %>
           </div>
@@ -63,7 +63,7 @@
             <%= f.label "What time are you arriving home?" %><br>
             <%= f.time_field :return_time, :value => @reservation.return_time %><br>
             <%= f.label "How many visits do you need on the day you return?" %><br>
-            <%= f.select :return_num_visits, [1,2,3,4], :selected => @reservation.return_num_visits %><br>
+            <%= f.select :return_num_visits, [0,1,2,3,4], :selected => @reservation.return_num_visits %><br>
           </div>
         </div>
 
