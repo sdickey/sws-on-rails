@@ -1,12 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2 well well-lg master-well">
-      <div class="well well-lg" style="background: #fafafa;">
-        <h1 class="form-header">Make a Reservation</h1>
-      </div>
+        <% if @reservation.errors.any? %>
+          <div class="col-md-8 col-md-offset-2 well well-lg master-well">
+            <div class="panel panel-default warning">
+                <div class="panel-heading" style="background: #f2dede">
+                  <h3 class="form-header" style="color: #A94442;" >
+                    Warning
+                  </h3>
+                </div>
+                <div class="panel-body">
+                  <ul style="font-size: 1.2em;">
+                    <% @reservation.errors.full_messages.each do |msg| %>
+                      <li><%= msg  %></li>
+                    <% end %>
+                  </ul>
+                 </div>
+            </div>
+          </div>
+        <% end %>
 
-      <div class="well well-lg" style="background: #fafafa;">
-      <p>Make a reservation using the form below or <%= link_to 'Back', account_dashboard_path(params[:account_id]), :class => 'link-btn' %></p>
+    <div class="col-md-8 col-md-offset-2 well well-lg master-well">
+      <div class="well well-lg">
+        <h1 class="form-header">Make a Reservation</h1>
       </div>
 
       <%= form_for ([@account, @account.reservations.build]) do |f| %>
@@ -18,7 +33,7 @@
           </div>
           <div class="panel-body">
             <%= f.label :Name %><br>
-            <%= f.text_field :name, :placeholder => 'Your name' %><br>
+            <%= f.text_field :name, :placeholder => 'Your name', :value => @reservation.name %><br>
           </div>
         </div>
 
@@ -28,13 +43,13 @@
           </div>
           <div class="panel-body">
             <%= f.label "What day are you leaving?" %><br>
-            <%= f.date_field :depart_date %><br>
+            <%= f.date_field :depart_date, :value => @reservation.depart_date %><br>
             <%= f.label "What time are you leaving?" %><br>
-            <%= f.time_field :depart_time %><br>
+            <%= f.time_field :depart_time, :value => @reservation.depart_time %><br>
             <%= f.label "How many visits do you need on the day you leave?" %><br>
-            <%= f.select :depart_num_visits, options_for_select([1,2,3,4]) %><br>
+            <%= f.select :depart_num_visits, [1,2,3,4], :selected => @reservation.depart_num_visits %><br>
             <%= f.label "Do you need an overnight visit on the day you leave?" %><br>
-            <%= f.select :overnight_on_depart, options_for_select(['no', 'yes']) %>
+            <%= f.select :overnight_on_depart, ['no', 'yes'], :selected => @reservation.overnight_on_depart %>
           </div>
         </div>
 
@@ -44,11 +59,11 @@
           </div>
           <div class="panel-body">
             <%= f.label "What day are you returning?" %><br>
-            <%= f.date_field :return_date %><br>
+            <%= f.date_field :return_date, :value => @reservation.return_date %><br>
             <%= f.label "What time are you arriving home?" %><br>
-            <%= f.time_field :return_time %><br>
+            <%= f.time_field :return_time, :value => @reservation.return_time %><br>
             <%= f.label "How many visits do you need on the day you return?" %><br>
-            <%= f.select :return_num_visits, options_for_select([1,2,3,4]) %><br>
+            <%= f.select :return_num_visits, [1,2,3,4], :selected => @reservation.return_num_visits %><br>
           </div>
         </div>
 
@@ -58,11 +73,11 @@
           </div>
           <div class="panel-body">
             <%= f.label "After departure, how many visits do you need each day (not including overnight visits or visits on the day of your arrival home)?" %><br>
-            <%= f.select :num_std_visits_between, options_for_select([1,2,3,4]) %><br>
+            <%= f.select :num_std_visits_between, [1,2,3,4], :selected => @reservation.num_std_visits_between %><br>
             <%= f.label "If you need a custom schedule, please describe dates and times in detail" %><br>
-            <%= f.text_area :custom_std_visit_schedule, :placeholder => 'For example: Two visits on 7/4: One visit at 10:00 a.m. and another at 3:00 p.m.' %><br>
+            <%= f.text_area :custom_std_visit_schedule, :placeholder => 'For example: Two visits on 7/4: One visit at 10:00 a.m. and another at 3:00 p.m.', :value => @reservation.custom_std_visit_schedule %><br>
             <%= f.label "Describe any specific daytime visit instructions not listed on your general account" %><br>
-            <%= f.text_area :std_visit_instructions, :placeholder => 'For example: Fluffy has had a hairball problem these past two days. Please check behind the recliner in the living room for any "yuk" spots and clean if necessary.' %><br>
+            <%= f.text_area :std_visit_instructions, :placeholder => 'For example: Fluffy has had a hairball problem these past two days. Please check behind the recliner in the living room for any "yuk" spots and clean if necessary.', :value => @reservation.std_visit_instructions %><br>
           </div>
         </div>
 
@@ -72,9 +87,9 @@
           </div>
           <div class="panel-body">
             <%= f.label "Do you need overnight visits after your departure?" %><br>
-            <%= f.select :overnights_between, options_for_select(['no', 'yes']) %><br>
+            <%= f.select :overnights_between, ['no', 'yes'], :value => @reservation.overnights_between %><br>
             <%= f.label "Describe specific overnight visit instructions not listed on your general account" %><br>
-            <%= f.text_area :overnight_instructions, :placeholder => 'For example: Please let Yoda out in the backyard twice before bedtime, and make sure his Tauntaun squeaky toy is in his doggy bed.' %><br>
+            <%= f.text_area :overnight_instructions, :placeholder => 'For example: Please let Yoda out in the backyard twice before bedtime, and make sure his Tauntaun squeaky toy is in his doggy bed.', :value => @reservation.overnight_instructions %><br>
           </div>
         </div>
 
@@ -84,9 +99,9 @@
           </div>
           <div class="panel-body">
             <%= f.label "Will you be leaving the country during the time frame of this reservation?" %><br>
-            <%= f.select :leaving_country, options_for_select(['no', 'yes']) %><br>
+            <%= f.select :leaving_country, ['no', 'yes'], :value => @reservation.leaving_country %><br>
             <%= f.label "How would you like to receive visit updates while you're away?" %><br>
-             <%= f.select :visit_updates_method, options_for_select(['text (preferred)', 'email']) %>
+             <%= f.select :visit_updates_method, ['text (preferred)', 'email'], :value => @reservation.visit_updates_method %>
           </div>
           <div class="note-to-user">
             <p>
@@ -102,8 +117,9 @@
 
 
         <p>
-          <%= f.submit :value => 'Send reservation request', :class => 'btn btn-primary' %>
-          <%= link_to 'Back', account_dashboard_path(@account.id), :class => 'btn btn-primary' %>
+          <%= f.submit :value => 'Send request', :class => 'btn btn-primary' %>
+          <%= button_tag 'Reset', :type => 'reset', :class => 'btn btn-primary' %>
+          <%= link_to 'Back to dashboard', account_dashboard_path(@account.id), :class => 'btn btn-primary pull-right' %>
         </p>
       <% end %>
     </div>

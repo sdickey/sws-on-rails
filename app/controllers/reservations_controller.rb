@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   def new
     @account = Account.find(params[:account_id])
+    @reservation = @account.reservations.build
   end
 
   def create
@@ -10,7 +11,7 @@ class ReservationsController < ApplicationController
       flash[:notice] = "Your reservation request has been sent!
       We'll be in contact soon. Please note that reservations are
       not added to our visit calendar until they are approved and
-      we have received a %50 deposit."
+      we have received a 50% deposit."
       redirect_to account_dashboard_path(@account.id)
     else
       flash[:alert] = "We're sorry, but something went wrong. Your

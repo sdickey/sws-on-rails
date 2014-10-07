@@ -1,12 +1,7 @@
 class Reservation < ActiveRecord::Base
   belongs_to :account
 
-  attr_accessor :name, :depart_date, :depart_time,
-  :depart_num_visits, :overnight_on_depart, :return_date,
-  :return_time, :return_num_visits, :num_std_visits_between,
-  :custom_std_visit_schedule, :std_visit_instructions,
-  :overnights_between, :overnight_instructions, :leaving_country,
-  :visit_updates_method
+  attr_accessor :depart_date, :return_date
 
   validates :name, presence: true
   validates :depart_date, presence: true
@@ -17,18 +12,29 @@ class Reservation < ActiveRecord::Base
   validates :return_time, presence: true
   validates :return_num_visits, presence: true
   validates :num_std_visits_between, presence: true
-  validates :custom_std_visit_schedule, presence: true
-  validates :std_visit_instructions, presence: true
   validates :overnights_between, presence: true
-  validates :overnight_instructions, presence: true
   validates :leaving_country, presence: true
   validates :visit_updates_method, presence: true
 
   validate :depart_date_cannot_be_in_past
+  validate :return_date_cannot_be_in_past
+  validate :return_date_after_depart_date
 
   def depart_date_cannot_be_in_past
-    if !depart_date.blank? and depart_date < Date.today
-      errors.add(:depart_date, "Your departure date can't be in the past")
+    if !depart_date.blank? and depart_date.to_date < Date.today
+      errors.add(:depart_date, "can't be in the past")
+    end
+  end
+
+  def return_date_cannot_be_in_past
+    if !return_date.blank? and return_date.to_date < Date.today
+      errors.add(:return_date, "can't be in the past")
+    end
+  end
+
+  def return_date_after_depart_date
+    if !return_date.blank? && !depart_date.blank? && return_date.to_date < depart_date.to_date
+      errors.add(:return_date, "can't come before your departure date")
     end
   end
 end
