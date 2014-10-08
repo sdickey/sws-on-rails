@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 well well-lg master-well reset-box">
+
+      <%= form_tag password_resets_path, :method => :post do %>
+        <div class="panel panel-default" style="background: #fafafa;">
+            <div class="panel-heading">
+              <h3 class="form-header">
+                Reset Password
+              </h3>
+            </div>
+            <div class="panel-body">
+              <%= label_tag :email %><br>
+              <%= text_field_tag :email, params[:email], :placeholder => 'you@youremail.com' %><br>
+              <%= submit_tag "Reset password", :class => 'btn btn-primary' %>
+            </div>
+            <p>
+            </p>
+        </div>
+      <% end %>
+  </div>
+</div>
+

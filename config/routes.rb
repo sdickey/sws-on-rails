@@ -1,6 +1,7 @@
 SwsRailsApp::Application.routes.draw do
   resources :sessions
   resources :account_dashboard
+  resources :password_resets
 
   resources :accounts do
     resources :owners
