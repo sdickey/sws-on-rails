@@ -61,7 +61,8 @@ label {
 
 /* Login page
 ======================= */
-.login input {
+.login input,
+.reset-box input {
   width: 100%;
   height: 45px;
   font-size: 1.5em;
@@ -84,6 +85,7 @@ label {
 .login-logo {
   text-align: center;
 }
+
 /* User dashboard styles
 ======================== */
 .dashboard-list {

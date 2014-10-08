@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006144647) do
+ActiveRecord::Schema.define(version: 20141008032922) do
 
   create_table "accounts", force: true do |t|
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "email"
-    t.integer  "keys_on_file",  default: 0
+    t.integer  "keys_on_file",           default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   create_table "emergency_contacts", force: true do |t|

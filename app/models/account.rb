@@ -10,12 +10,27 @@ class Account < ActiveRecord::Base
   validates :password, presence: true, length: { in: 10..20 }, confirmation: true,
                        format: { with: /\A(?=(?:[^a-z]*[a-z]{4}))(?=(?:[^A-Z]*[A-Z]){2})(?=\D*\d)(?=\w*[!\$\.\?#@\^%&]+)/ }
 
+
   validates :password_confirmation, presence: true
 
   validates :email, presence: true, uniqueness: true,
                     format: { with: /.+@.+\.[a-z]{2,}/ }
 
+
   validates :email_confirmation, presence: true
+
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!(:validate => false)
+    AccountMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Account.exists?(column => self[column])
+  end
 
   def self.authenticate(email, password)
     account = find_by_email(email)
