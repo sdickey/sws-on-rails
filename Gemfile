@@ -6,7 +6,7 @@ gem 'rails', '4.0.3'
 gem 'bcrypt-ruby', require: "bcrypt"
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 
 
 # Use SCSS for stylesheets
@@ -67,6 +67,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'factory_girl_rails', '~> 4.4.0'
+  gem 'sqlite3'
 end
 
 group :test do
