@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require jquery-readyselector
+//= require fullcalendar
 //= require_tree .
