@@ -32,6 +32,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# gem for displaying calendar
+gem 'fullcalendar-rails', '~> 1.6.4.0'
+
 # Gems for sending reservation emails
 gem 'mail_form', '~> 1.5.0'
 gem 'simple_form', '~> 3.0.2'
