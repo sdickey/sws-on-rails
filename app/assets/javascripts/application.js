@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require jquery-readyselector
 //= require fullcalendar
+//= require gcal
 //= require_tree .
