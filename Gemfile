@@ -70,6 +70,11 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+group :production do
+  gem 'pg', '~> 0.17.1'
+  gem 'rails_12factor', '~> 0.0.2'
+end
+
 group :test do
   gem 'faker', '~> 1.4.3'
   gem 'capybara', '~> 2.4.2'
