@@ -6,7 +6,7 @@ gem 'rails', '4.0.3'
 gem 'bcrypt-ruby', require: "bcrypt"
 
 # Use sqlite3 as the database for Active Record
-
+gem 'sqlite3'
 
 
 # Use SCSS for stylesheets
