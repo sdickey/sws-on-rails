@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   def current_account
     @current_account ||= Account.find(session[:account_id]) if session[:account_id]
   end
+
+  def authorize
+    redirect_to root_url, alert: "You have to log in to do that." if current_account.nil?
+  end
 end

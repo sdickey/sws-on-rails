@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_filter :authorize
   def new
     @account = Account.find(params[:account_id])
     @reservation = @account.reservations.build

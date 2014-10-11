@@ -20,7 +20,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand nav-logo" href="#"><%= image_tag('SWSnavbarLogo.gif')%></a>
+      <a class="navbar-brand nav-logo" href="#"><%= image_tag('SWSnavbarLogo.png')%></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,9 +31,9 @@
         <li><a href="#">Services</a></li>
         <li><a href="#">Howl at Us</a></li>
         <% if current_account %>
-          <li><%= link_to 'Reservations', new_account_reservation_path(@account.id) %></li>
-          <li><%= link_to 'Make a Payment', new_account_reservation_path(@account.id) %></li>
-          <li><%= link_to 'Dashboard', account_dashboard_path(@account.id) %></li>
+          <li><%= link_to 'Reservations', new_account_reservation_path(current_account.id) %></li>
+          <li><%= link_to 'Make a Payment', new_account_reservation_path(current_account.id) %></li>
+          <li><%= link_to 'Dashboard', account_dashboard_path(current_account.id) %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

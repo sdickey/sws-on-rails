@@ -1,4 +1,5 @@
 class EmergencyContactsController < ApplicationController
+  before_filter :authorize
 
   def new
     @account = Account.find(params[:account_id])
