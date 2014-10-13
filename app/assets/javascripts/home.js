@@ -1,5 +1,5 @@
 $(document).on('ready page:load', function () {
   setTimeout(function(){
     $('#myModal').modal();
-  }, 3000);
+  }, 2000);
 }); //end document ready
