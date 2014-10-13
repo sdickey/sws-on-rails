@@ -17,4 +17,5 @@
 //= require jquery-readyselector
 //= require fullcalendar
 //= require gcal
+//= require home.js
 //= require_tree .
