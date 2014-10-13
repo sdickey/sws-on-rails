@@ -1,7 +1,5 @@
 $(document).on('ready page:load', function () {
-  noNewClients();
-});
-
-function noNewClients() {
-  $('#myModal').modal();
-}
+  setTimeout(function(){
+    $('#myModal').modal();
+  }, 3000);
+}); //end document ready
