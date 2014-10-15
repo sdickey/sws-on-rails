@@ -8,10 +8,16 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-      redirect_to new_session_path #new_owner_path
+      redirect_to new_session_path
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @account = Account.find(params[:id])
+    @account.destroy
+    redirect_to admin_path
   end
 
   private

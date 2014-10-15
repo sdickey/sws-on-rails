@@ -10,6 +10,11 @@ SwsRailsApp::Application.routes.draw do
     resources :reservations
   end
 
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+    resources :accounts
+  end
+
   get "signup" => "account#new", :as => "signup"
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"
