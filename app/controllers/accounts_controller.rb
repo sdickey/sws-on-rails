@@ -14,6 +14,11 @@ class AccountsController < ApplicationController
     end
   end
 
+  def update
+    @account = Account.find(params[:id])
+    @account.update(account_params)
+  end
+
   def destroy
     @account = Account.find(params[:id])
     @account.destroy
@@ -23,6 +28,7 @@ class AccountsController < ApplicationController
   private
     def account_params
       params.require(:account).permit(:email, :email_confirmation, :password,
-                                      :password_confirmation, :keys_on_file)
+                                      :password_confirmation, :keys_on_file,
+                                      :admin)
     end
 end

@@ -1,14 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h1>A view for the list of accounts. This will be a table of all accounts, with destroy links next to them</h1>
+    <div class="col-md-8 col-md-offset-2 well well-lg">
+      <div class="well well-lg" style="background: #fafafa;">
+        <h1 class="form-header">SWS Accounts</h1>
+      </div>
 
-      <% @accounts.each do |account| %>
-        <li><%= account.email %> <% account.pets.each do |pet| %>
-          <li><%= pet.name %></li>
+
+      <div class="well well-lg admin-manage-accounts" style="background: #fafafa;">
+        <% @accounts.each do |account| %>
+          <% unless account.admin %>
+            <% account.owners.each do |owner| %>
+              <li>
+                <%= owner.first_name %> <%= owner.last_name %>
+            </li>
+            <% end %>
+                <%= link_to 'delete', account_path(account.id), method: :delete, data: { confirm: 'Are you sure you want to delete this account?'}, :class => 'btn btn-danger' %>
+                <%= link_to 'view account', account_dashboard_path(account.id), :class => 'btn btn-primary' %>
+            <hr>
+          <% end %>
         <% end %>
-          <%= link_to 'delete', account_path(account.id), :class => 'pull-right', method: :delete %></li>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
