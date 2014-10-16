@@ -43,10 +43,6 @@
     <%= f.label "Confirm password" %><br>
     <%= f.password_field :password_confirmation %>
   </p>
-   <p>
-    <%= f.label "Admin" %><br>
-    <%= f.select :admin, [true, false] %>
-  </p>
   <p>
     <%= f.submit :value => 'Create account', :class => 'btn btn-primary' %>
     <%= button_tag 'Reset', :type => 'reset', :class => 'btn btn-primary' %>
