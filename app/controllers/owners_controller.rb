@@ -36,7 +36,7 @@ class OwnersController < ApplicationController
     @account = Account.find(params[:account_id])
     @owner = @account.owners.find(params[:id])
     @owner.destroy
-    render 'new'
+    redirect_to account_dashboard_path(@account.id)
   end
 
   private

@@ -1,0 +1,29 @@
+<%= @reservation.first_name %>,
+
+<% if @reservation.availability_confirmed == 'no' %>
+We're sorry, but we don't have availability for your reservation request with the
+start date of <%= @reservation.depart_date %> and end date of <%= @reservation.return_date %>.
+
+If you have flexibility in your plans, please feel free to revisit our reservations
+calendar and select new dates.
+
+<% elsif @reservation.availability_confirmed == 'yes' && @reservation.deposit_confirmed == 'no' %>
+We're happy to say that we currently have availability for your reservation
+request with the start date of <%= @reservation.depart_date %> and end date of <%= @reservation.return_date %>.
+
+We'll send you an invoice showing the total cost of the scheduled visits. In order for this reservation
+to be added to our calendar, we need to receive a 50% deposit. Please understand that another
+client may book some or all of the same dates listed in this reservation. If that happens, and we
+receive their deposit before yours, they'll be added to the sit calendar and we will no longer be
+available to serve you for this reservation.
+
+<% elsif @reservation.availability_confirmed == 'pending' && @reservation.deposit_confirmed == 'yes' %>
+We received a deposit for the reservation request with a start date of <%= @reservation.depart_date %>
+and end date of <%= @reservation.return_date %>. However, we haven't approved our availability during
+these dates.
+
+We'll contact you soon and let you know if we'll be able to provide pet sitting services for this
+reservation request.
+<% end %>
+
+Thank you for choosing SWS as your pet sitters!

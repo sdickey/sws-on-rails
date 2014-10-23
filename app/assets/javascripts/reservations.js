@@ -1,5 +1,7 @@
 $(document).on('ready page:load', function () {
   showCalendar();
+  pickDepartureDate();
+  pickReturnDate();
 });
 
 function showCalendar() {
@@ -42,5 +44,17 @@ function clearCalendar() {
     $('#calendar').slideUp();
     $('#calendar').empty();
     addViewCalendarBtn();
+  });
+}
+
+function pickDepartureDate() {
+  $('#reservation_depart_date').datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
+}
+
+function pickReturnDate() {
+  $('#reservation_return_date').datepicker({
+    dateFormat: 'yy-mm-dd'
   });
 }

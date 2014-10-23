@@ -6,6 +6,12 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+config = YAML.load(File.read(File.expand_path('../application_secure.yml', __FILE__)))
+config.merge! config.fetch(Rails.env, {})
+config.each do |key, value|
+    ENV[key] = value unless value.kind_of? Hash
+end
+
 module SwsRailsApp
   class Application < Rails::Application
 
@@ -23,6 +29,7 @@ module SwsRailsApp
     config.i18n.enforce_available_locales = true
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+     config.action_mailer.default_url_options = { :host => ENV['MAILER_HOST'] }
     config.generators do |g|
         g.test_framework :rspec,
         fixtures: true,

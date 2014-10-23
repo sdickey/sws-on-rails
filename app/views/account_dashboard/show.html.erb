@@ -26,6 +26,7 @@
                   <%= link_to 'edit', edit_account_owner_path(owner.account_id, owner.id), :class => 'btn btn-success' %>
                   <%= link_to 'remove', account_owner_path(owner.account_id, owner.id), :class => 'btn btn-danger',
                       method: :delete, data: { confirm: "Are you sure you want to permanently delete #{owner.first_name} #{owner.last_name} from the account?"} %>
+                  <%= link_to 'add owner', new_account_owner_path(owner.account_id, owner.id), :class => 'btn btn-success pull-right'  %>
                 </ul>
                 <hr>
             <% end %>
@@ -54,7 +55,8 @@
                 <li class="list-group-item"><b>behavior:</b> <%= pet.behavior %></li>
                 <%= link_to 'edit', edit_account_pet_path(pet.account_id, pet.id), :class => 'btn btn-success' %>
                 <%= link_to 'remove', account_pet_path(pet.account_id, pet.id), :class => 'btn btn-danger',
-                      method: :delete, data: { confirm: "Are you sure you want to permanently delete #{pet.name} from the account?"} %>
+                      method: :delete, data: { confirm: "Are you sure you want to permanently delete #{pet.name} from the account?" } %>
+                <%= link_to 'add pet', new_account_pet_path(pet.account_id, pet.id), :class => 'btn btn-success pull-right'  %>
               </ul>
               <hr>
             <% end %>
@@ -74,11 +76,91 @@
                 <%= link_to 'edit', edit_account_emergency_contact_path(contact.account_id, contact.id), :class => 'btn btn-success' %>
                 <%= link_to 'remove', account_emergency_contact_path(contact.account_id, contact.id), :class => 'btn btn-danger',
                       method: :delete, data: { confirm: "Are you sure you want to permanently delete #{contact.emerg_first_name} #{contact.emerg_last_name} from the account?"} %>
+                <%= link_to 'add emergency contact', new_account_emergency_contact_path(contact.account_id, contact.id), :class => 'btn btn-success pull-right'  %>
               </ul>
               <hr>
             <% end %>
           </div>
         </div>
-    </div>
+        <% if @account.reservations.length > 0 %>
+          <div class="panel panel-default" style="background: #fafafa;">
+            <div class="panel-heading">
+              <h3 class="form-header">Reservations</h3>
+            </div>
+            <div class="panel-body">
+              <% @account.reservations.each_with_index do |reservation, index| %>
+                <ul class="dashboard-list">
+                  <h3>Reservation <%= index + 1 %></h3>
+                  <% if reservation.availability_confirmed == 'no' %>
+                    <h4 class="reservation-status denied">Status: denied</h4>
+                    <ul class="reservation-denied">
+                      <li>
+                        We're sorry, but we're booked for some or all of the dates
+                        in this reservation.
+                      </li>
+                    </ul>
+                  <% elsif reservation.availability_confirmed == 'pending' || reservation.deposit_confirmed == 'no' %>
+                    <h4 class="reservation-status pending">Status: pending</h4>
+                    <ul class="reservation-pending">
+                      <% if reservation.availability_confirmed == 'pending' && reservation.deposit_confirmed =='no' %>
+                        <li>We haven't approved availability for this reservation</li>
+                        <li>We haven't received your deposit</li>
+                      <% elsif reservation.availability_confirmed == 'pending' && reservation.deposit_confirmed == 'yes' %>
+                        <li class="deposit-confirmed">*We received your deposit for this reservation</li>
+                        <li>But we haven't approved availability for this reservation</li>
+                        <p class="deposit-but-no-avail-confirm">
+                          *A deposit without confirmed availability does not guarantee this reservation.
+                          This reservation will not be added to our calendar until we have
+                          approved our availability.
+                        </p>
+                      <% elsif reservation.deposit_confirmed == 'no' && reservation.availability_confirmed == 'yes' %>
+                        <li class="available-confirmed">*At the moment, we have availability for this reservation</li>
+                        <li>But we haven't received your deposit</li>
+                        <p class="available-but-no-deposit">
+                          * This reservation isn't on the calendar until we have received a deposit.
+                          Another client may book some or all of the dates on which you need pet
+                          sitting. If they secure those dates with a deposit before we receive your
+                          deposit, we will add them to our calendar, which may make us unavailable
+                          for the dates on this reservation.
+                        </p>
+                      <% end %>
+                    </ul>
+                  <% elsif %>
+                    <h4 class="reservation-status approved">Status: approved</h4>
+                    <ul class="reservation-approved">
+                      <li>We're available for this reservation</li>
+                      <li>We have received your deposit for this reservation</li>
+                      <li>This reservation has been added to the SWS pet sitting calendar</li>
+                    </ul>
+                  <% end %>
+
+                  <li><b>departure date:</b> <%= reservation.depart_date %></li>
+                  <li><b>departure time:</b> <%= reservation.depart_time %></li>
+                  <li><b>number of visits on departure date:</b> <%= reservation.depart_num_visits %></li>
+                  <li><b>overnight on departure date:</b> <%= reservation.overnight_on_depart %></li>
+                  <hr>
+                  <li><b>return date:</b> <%= reservation.return_date%></li>
+                  <li><b>return time:</b> <%= reservation.return_time%></li>
+                  <li><b>number of visits on return date:</b> <%= reservation.return_num_visits %></li>
+                  <hr>
+                  <li><b>number of day visits:</b> <%= reservation.num_std_visits_between %></li>
+                  <li class="list-group-item"><b>custom day visit schedule:</b> <%= reservation.custom_std_visit_schedule %></li>
+                  <li class="list-group-item"><b>day visit instructions:</b> <%= reservation.std_visit_instructions %></li>
+                  <hr>
+                  <li><b>overnight visits after departure:</b> <%= reservation.overnights_between %></li>
+                  <li class="list-group-item"><b>overnight instructions:</b> <%= reservation.overnight_instructions %></li>
+                  <li><b>leaving the country:</b> <%= reservation.leaving_country %></li>
+                  <li><b>preferred visit update method:</b> <%= reservation.visit_updates_method %></li>
+                  <%= link_to 'edit', edit_account_reservation_path(reservation.account_id, reservation.id), :class => 'btn btn-success' %>
+                  <%= link_to 'remove', account_reservation_path(reservation.account_id, reservation.id), :class => 'btn btn-danger',
+                        method: :delete, data: { confirm: "Are you sure you want to permanently delete this reservation?" } %>
+                  <%= link_to 'add a reservation', new_account_reservation_path(reservation.account_id, reservation.id), :class => 'btn btn-success pull-right'  %>
+                </ul>
+                <hr>
+              <% end %>
+            </div>
+          </div>
+      </div><!--end reservations div-->
+    <% end %>
   </div>
 </div>

@@ -78,7 +78,8 @@
         </div>
         <p>
           <%= f.submit :value => 'Add Pet', :class => 'btn btn-primary' %>
-          <%= link_to 'Back', new_account_owner_path, :class => 'btn btn-primary' %>
+          <%= button_tag 'Reset', :type => 'reset', :class => 'btn btn-primary' %>
+          <%= link_to 'Back', new_account_owner_path, :class => 'btn btn-primary pull-right' %>
         </p>
       <% end %>
     </div>

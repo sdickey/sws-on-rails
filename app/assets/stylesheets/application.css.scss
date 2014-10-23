@@ -1,7 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "jquery.ui.core"; // you always want that stylesheet
+@import "jquery.ui.theme"; // import this when you want to build on jQuery UI's themeing
+@import "jquery.ui.datepicker"; // import all the modules you need
+
 /*
 *= require fullcalendar
+*= require jquery.ui.datepicker
 *= require tree .
 */
 
@@ -119,8 +124,8 @@ label {
   border-radius: 5px;
 }
 
-/* Reservations
-======================= */
+/* Reservations on User Dashboard
+================================= */
 .note-to-user {
   padding: 10px;
 }
@@ -128,6 +133,66 @@ label {
 #calendar {
   display: none;
 }
+
+.reservation-status {
+  margin: 20px auto 0px -5px;
+  padding: 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.pending {
+  background: #f7f7af;
+  color: goldenrod;
+ }
+
+.approved {
+  background: #DFF0D8;
+  color: #3c763d;
+}
+
+.denied {
+  background: #F2DEDE;
+  color: #A94442;
+}
+
+ul.reservation-pending {
+  background: #f7f7af;
+  color: goldenrod;
+}
+
+ul.reservation-approved {
+  background: #dff0d8;
+  color: #3c763d;
+}
+
+ul.reservation-denied {
+  background: #F2DEDE;
+  color: #A94442;
+}
+
+ul.reservation-pending,
+ul.reservation-approved,
+ul.reservation-denied {
+  margin-left: -5px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+  list-style-type: disc;
+}
+
+.available-confirmed,
+.deposit-confirmed {
+  color: #3C763D;
+}
+
+.available-but-no-deposit,
+.deposit-but-no-avail-confirm {
+  margin-left: -20px;
+  padding-right: 25px;
+}
+
 
 /* Home page
 ======================= */
@@ -144,6 +209,12 @@ label {
 .admin-manage-accounts li {
   list-style-type: none;
   margin-bottom: 10px;
+}
+
+.admin-manage-accounts ul.reservation-pending li,
+.admin-manage-accounts ul.reservation-approved li,
+.admin-manage-accounts ul.reservation-denied li {
+  list-style-type: disc;
 }
 
 /*!

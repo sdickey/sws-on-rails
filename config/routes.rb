@@ -13,6 +13,7 @@ SwsRailsApp::Application.routes.draw do
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
     resources :accounts
+    resources :reservations
   end
 
   get "signup" => "account#new", :as => "signup"

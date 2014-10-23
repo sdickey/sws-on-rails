@@ -1,0 +1,48 @@
+Hi, Marina!
+
+<%= @reservation.first_name %> <%= @reservation.last_name %> has updated a recent reservation request.
+
+Here are the details:
+
+----- DAY OF DEPARTURE -----
+Departure date: <%= @reservation.depart_date %>
+
+Departure time: <%= @reservation.depart_time %>
+
+Number of visits needed on departure date: <%= @reservation.depart_num_visits %>
+
+Overnight needed on departure date: <%= @reservation.overnight_on_depart %>
+
+
+----- DAY OF RETURN -----
+Return date: <%= @reservation.return_date %>
+
+Return time: <%= @reservation.return_time %>
+
+Number of visits needed on return date: <%= @reservation.return_num_visits %>
+
+
+----- DAY VISITS BETWEEN DEPARTURE AND RETURN -----
+Number of day time visits, not including departure or return date: <%= @reservation.num_std_visits_between %>
+
+Custom day time visit schedule:
+<%= @reservation.custom_std_visit_schedule %>
+
+Day time visit instructions:
+<%= @reservation.std_visit_instructions %>
+
+
+----- OVERNIGHT VISITS BETWEEN DEPARTURE AND RETURN -----
+Overnight visits requested: <%= @reservation.overnights_between %>
+
+Overnight visit instructions:
+<%= @reservation.overnight_instructions %>
+
+
+----- TRAVEL WITHIN THE US -----
+Is the client leaving the country: <%= @reservation.leaving_country %>
+
+
+----- UPDATE METHOD -----
+Client wants updates by: <%= @reservation.visit_updates_method %>
+

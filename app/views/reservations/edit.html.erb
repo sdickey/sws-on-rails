@@ -32,10 +32,10 @@
 
     <div class="col-md-8 col-md-offset-2 well well-lg master-well">
       <div class="well well-lg">
-        <h1 class="form-header">Make a Reservation</h1>
+        <h1 class="form-header">Edit Reservation</h1>
       </div>
 
-      <%= form_for ([@account, @account.reservations.build]) do |f| %>
+      <%= form_for ([@account, @account.reservations.build]), url: account_reservation_path(@reservation.account_id, @reservation.id), method: :put do |f| %>
         <div class="panel panel-default" style="background: #fafafa;">
           <div class="panel-heading">
             <h3 class="form-header">
@@ -100,7 +100,7 @@
           </div>
           <div class="panel-body">
             <%= f.label "Do you need overnight visits after your departure?" %><br>
-            <%= f.select :overnights_between, ['no', 'yes'], :value => @reservation.overnights_between %><br>
+            <%= f.select :overnights_between, ['no', 'yes'], :selected => @reservation.overnights_between %><br>
             <%= f.label "Describe specific overnight visit instructions not listed on your general account" %><br>
             <%= f.text_area :overnight_instructions, :placeholder => 'For example: Please let Yoda out in the backyard twice before bedtime, and make sure his Tauntaun squeaky toy is in his doggy bed.', :value => @reservation.overnight_instructions %><br>
           </div>
@@ -112,9 +112,9 @@
           </div>
           <div class="panel-body">
             <%= f.label "Will you be leaving the country during the time frame of this reservation?" %><br>
-            <%= f.select :leaving_country, ['no', 'yes'], :value => @reservation.leaving_country %><br>
+            <%= f.select :leaving_country, ['no', 'yes'], :selected => @reservation.leaving_country %><br>
             <%= f.label "How would you like to receive visit updates while you're away?" %><br>
-             <%= f.select :visit_updates_method, ['text (preferred)', 'email'], :value => @reservation.visit_updates_method %>
+             <%= f.select :visit_updates_method, ['text (preferred)', 'email'], :selected => @reservation.visit_updates_method %>
           </div>
           <div class="note-to-user">
             <p>
@@ -128,12 +128,29 @@
           </div>
         </div>
 
-
-        <p>
-          <%= f.submit :value => 'Send request', :class => 'btn btn-primary' %>
-          <%= button_tag 'Reset', :type => 'reset', :class => 'btn btn-primary' %>
-          <%= link_to 'Back to dashboard', account_dashboard_path(@account.id), :class => 'btn btn-primary pull-right' %>
-        </p>
+        <% if @current_account.admin %>
+          <div class="panel panel-default" style="background: #fafafa;">
+            <div class="panel-heading">
+              <h3 class="form-header">Admin Approvals</h3>
+            </div>
+            <div class="panel-body">
+              <%= f.label "Do you have availability for this reservation?" %><br>
+              <%= f.select :availability_confirmed, ['pending', 'no', 'yes'], :selected => @reservation.availability_confirmed %><br>
+              <%= f.label "Have you received a deposit for this reservation?" %><br>
+              <%= f.select :deposit_confirmed, ['no', 'yes'], :selected => @reservation.deposit_confirmed %><br>
+            </div>
+          </div>
+          <p>
+            <%= f.submit :value => 'Update', data: { confrim: "Are you sure you want to make changes to this reservation?" }, :class => 'btn btn-primary' %>
+            <%= link_to 'Back to all reservations', admin_reservations_path, :class => 'btn btn-primary pull-right' %>
+          </p>
+        <% else %>
+          <p>
+            <%= f.submit :value => 'Update', data: { confrim: "Are you sure you want to make changes to this reservation?" }, :class => 'btn btn-primary' %>
+            <%= button_tag 'Reset', :type => 'reset', :class => 'btn btn-primary' %>
+            <%= link_to 'Back to dashboard', account_dashboard_path(@account.id), :class => 'btn btn-primary pull-right' %>
+          </p>
+        <% end %>
       <% end %>
     </div>
   </div>

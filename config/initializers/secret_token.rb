@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-SwsRailsApp::Application.config.secret_key_base = 'd10bed7b59aaf6b67d3b0d058e1d8358ba654c9ba023f0990cfa6281f75e86205e219dd863dbee218c6e959f83ee2a970e983da1a54d8c6daf0a6a2bb9377d62'
+SwsRailsApp::Application.config.secret_key_base = ENV["SECRET_TOKEN"]

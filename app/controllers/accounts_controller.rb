@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  http_basic_authenticate_with name: "FurryKids", password: "petsrule"
+  http_basic_authenticate_with name: ENV['NEW_ACCOUNT_USERNAME'], password: ENV['NEW_ACCOUNT_PASSWORD']
 
   def new
     @account = Account.new
@@ -14,9 +14,18 @@ class AccountsController < ApplicationController
     end
   end
 
+  def edit
+    @account = Account.find(params[:id])
+  end
+
   def update
     @account = Account.find(params[:id])
-    @account.update(account_params)
+
+    if @account.update(account_params)
+      redirect_to account_dashboard_path(@account.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
