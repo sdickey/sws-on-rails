@@ -17,3 +17,6 @@
 
 # Ignore email settings
 /config/application_secure.yml
+
+# Ignore .env files
+*.env
