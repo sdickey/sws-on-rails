@@ -18,8 +18,13 @@ test:
   pool: 5
   timeout: 5000
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
 
+production:
+  adapter: postgresql
+  database: db/production.postgres
+  pool: 5
+  timeout: 5000

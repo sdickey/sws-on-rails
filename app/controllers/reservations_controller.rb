@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
     @account = Account.find(params[:account_id])
     @reservation = @account.reservations.create(reservation_params)
     if @reservation.save
-      ReservationMailer.reservation_requested(@reservation, @account).deliver
+      ReservationMailer.delay.reservation_requested(@reservation, @account)
       flash[:notice] = "Your reservation request has been sent!
       We'll be in contact soon. Please note that reservations are
       not added to our visit calendar until they are approved and
@@ -36,7 +36,7 @@ class ReservationsController < ApplicationController
 
     if !is_admin?
       if @reservation.update(reservation_params)
-        ReservationMailer.reservation_update_by_client(@reservation, @account).deliver
+        ReservationMailer.delay.reservation_update_by_client(@reservation, @account)
         flash[:notice] = "Your reservation has been updated!"
         redirect_to account_dashboard_path(@account.id)
       else
@@ -46,12 +46,13 @@ class ReservationsController < ApplicationController
       end
     else
       if @reservation.update(reservation_params)
-        ReservationMailer.reservation_update_by_admin(@reservation, @account).deliver
+        ReservationMailer.delay.reservation_update_by_admin(@reservation, @account)
         flash[:notice] = "This reservation has been updated"
         redirect_to admin_reservations_path
       else
         flash[:notice] = "Sorry, but your updates couldn't be
         saved. Please try again."
+        render 'edit'
       end
     end
   end

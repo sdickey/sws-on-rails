@@ -73,7 +73,7 @@ SwsRailsApp::Application.configure do
   #   :host => 'yoursite.herokuapp.com'
   # }
 
-  # Rails.application.routes.default_url_options[:host] = 'yoursite.herokuapp.com'
+  # Rails.application.routes.default_url_options[:host] = 'shakewagglestroll.herokuapp.com'
 
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.perform_deliveries = true

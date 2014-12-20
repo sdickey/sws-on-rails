@@ -30,4 +30,34 @@ class Reservation < ActiveRecord::Base
       errors.add(:return_date, "can't come before your departure date")
     end
   end
+
+  ###########################################################################
+  # the code below was a fix for running class methods as singleton methods #
+  # in order to use delayed_job on clear_old_reservations.                  #
+  # I'm not sure it works.                                                  #
+  # Previously, these were both self.method_name methods                    #
+  # with no weird class << self business                                    #
+  ###########################################################################
+
+  class << self
+
+    def reservation_reminder_email
+      Reservation.all.each do |reservation|
+        if ( reservation.depart_date.to_date - Date.today == 8 )
+          ReservationMailer.delay.reservation_reminder(reservation)
+        end
+      end
+    end
+
+    def clear_old_reservations
+      Reservation.all.each do |reservation|
+        if ( Date.today - reservation.depart_date.to_date == 1 )
+          reservation.destroy
+        end
+      end
+    end
+
+    # always run as background job using delayed_job gem
+    handle_asynchronously :clear_old_reservations
+  end
 end

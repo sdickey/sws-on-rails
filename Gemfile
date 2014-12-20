@@ -23,6 +23,15 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+# delayed job for background jobs
+gem 'delayed_job_active_record'
+
+# for running delayed job in production
+gem 'daemons'
+
+# web interface for managing job queue
+gem 'delayed_job_web'
+
 # gem 'therubyracer'
 
 # gem 'less'

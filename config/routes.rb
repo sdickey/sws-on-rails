@@ -21,4 +21,6 @@ SwsRailsApp::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "home/index"
   root 'home#index'
+
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 end
