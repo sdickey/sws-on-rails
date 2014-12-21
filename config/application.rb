@@ -7,11 +7,11 @@ require 'rails/all'
 Bundler.require(:default, Rails.env)
 
 ###################### Comment out when deploying to Heroku #################################
-# config = YAML.load(File.read(File.expand_path('../application_secure.yml', __FILE__)))
-# config.merge! config.fetch(Rails.env, {})
-# config.each do |key, value|
-#     ENV[key] = value unless value.kind_of? Hash
-# end
+config = YAML.load(File.read(File.expand_path('../application_secure.yml', __FILE__)))
+config.merge! config.fetch(Rails.env, {})
+config.each do |key, value|
+    ENV[key] = value unless value.kind_of? Hash
+end
 ##############################################################################################
 
 module SwsRailsApp
