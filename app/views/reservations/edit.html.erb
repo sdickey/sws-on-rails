@@ -35,7 +35,7 @@
         <h1 class="form-header">Edit Reservation</h1>
       </div>
 
-      <%= form_for ([@account, @account.reservations.build]), url: account_reservation_path(@reservation.account_id, @reservation.id), method: :patch do |f| %>
+     <!--  <%= form_for ([@account, @account.reservations.build]), #url: account_reservation_path(@reservation.account_id, @reservation.id), method: :patch do |f| %>
         <div class="panel panel-default" style="background: #fafafa;">
           <div class="panel-heading">
             <h3 class="form-header">
@@ -151,7 +151,7 @@
             <%= link_to 'Back to dashboard', account_dashboard_path(@account.id), :class => 'btn btn-primary pull-right' %>
           </p>
         <% end %>
-      <% end %>
+      <%# end %> -->
     </div>
   </div>
 </div>

@@ -35,7 +35,7 @@
         <h1 class="form-header">Make a Reservation</h1>
       </div>
 
-      <%= form_for ([@account, @account.reservations.build]) #do |f| %>
+      <%= form_for ([@account, @account.reservations.build]) do |f| %>
         <div class="panel panel-default" style="background: #fafafa;">
           <div class="panel-heading">
             <h3 class="form-header">
