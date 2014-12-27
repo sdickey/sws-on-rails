@@ -5,6 +5,7 @@ class Account < ActiveRecord::Base
   has_many :reservations
 
   attr_accessor :password, :email_confirmation
+  accepts_nested_attributes_for :owners, :pets, :emergency_contacts, :reservations
   before_save :encrypt_password
 
   validates :password, presence: true, length: { in: 10..20 }, confirmation: true,

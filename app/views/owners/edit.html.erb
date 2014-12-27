@@ -5,7 +5,32 @@
         <h1 class="form-header">Edit Owner</h1>
       </div>
       <%= form_for ([@account, @account.owners.build]), url: account_owner_path(@owner.account_id, @owner.id), method: :put do |f| %>
-
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label "First name" %><br>
+          <%= f.text_field :first_name, :value => @owner.first_name %><br>
+          <%= f.label "Last name" %><br>
+          <%= f.text_field :last_name, :value => @owner.last_name %><br>
+          <%= f.label :Email %><br>
+          <%= f.text_field :email, :value => @owner.email %><br>
+        </div>
+        <div class="well well-lg" style="background: #fafafa;">
+          <%= f.label :Address %><br>
+          <%= f.text_field :number_and_street, :value => @owner.number_and_street %><br>
+          <%= f.label "Unit or Apt" %><br>
+          <%= f.text_field :unit, :value => @owner.unit %><br>
+          <%= f.label :City %><br>
+          <%= f.text_field :city, :value => @owner.city %><br>
+          <%= f.label "State" %><br>
+          <%= f.text_field :state, :value => @owner.state %><br>
+          <%= f.label "Zip code" %><br>
+          <%= f.text_field :zip, :value => @owner.zip %><br>
+          <%= f.label "Home phone" %><br>
+          <%= f.text_field :home_phone, :value => @owner.home_phone %><br>
+          <%= f.label "Work phone" %><br>
+          <%= f.text_field :work_phone, :value => @owner.work_phone %><br>
+          <%= f.label "Cell phone" %><br>
+          <%= f.text_field :cell_phone, :value => @owner.cell_phone %><br>
+        </div>
         <p>
           <%= f.submit :value => "Update owner", :class => "btn btn-primary" %>
           <%= link_to 'Back', account_dashboard_path(@owner.account_id), :class => 'btn btn-primary' %>
